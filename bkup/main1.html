@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InsightSprint｜調査データ分析サービス - KITAI株式会社</title>
+  <meta name="description" content="アンケートのローデータをお渡しいただくだけ。生成AI×専門知見により翌営業日に“使える”PDFレポートを納品する『InsightSprint』の紹介サイト。" />
+  <style>
+    :root{
+      --ink:#0b1220; --sub:#334155; --muted:#64748b; --line:#e2e8f0; --soft:#f8fafc;
+      --accent:#0ea5e9; --accent-2:#22d3ee; --radius:18px;
+      --shadow: 0 8px 32px rgba(2,6,23,.14); --shadow-strong: 0 12px 48px rgba(2,6,23,.24);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink);
+      background:
+        radial-gradient(1200px 360px at 50% -80px, rgba(14,165,233,.08), transparent),
+        linear-gradient(180deg,var(--soft),#fff);
+      font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; line-height:1.6;
+      overflow-x:hidden;
+    }
+    a{color:var(--accent); text-decoration:none}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:40; backdrop-filter:saturate(180%) blur(12px);
+      background:rgba(255,255,255,.85); border-bottom:1px solid var(--line);
+      transition: box-shadow .35s ease;
+    }
+    header.is-scrolled{ box-shadow: var(--shadow); }
+    .wrap{max-width:1100px; margin:0 auto; padding:0 18px}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; height:68px}
+    .logo{display:flex; align-items:center; gap:12px}
+    /* 企業ロゴ（添付JPG） */
+    .logo img{height:56px; width:auto; display:block}
+    @media (max-width: 900px){ .logo img{height:44px} }
+    .nav a{color:var(--sub); font-weight:600}
+    .nav .menu{display:flex; gap:18px; align-items:center}
+
+    /* Buttons - CTA */
+    .cta-btn{
+      --glow: rgba(34,211,238,.35);
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:14px 20px; font-weight:900; border-radius:999px; color:white;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      box-shadow: 0 6px 20px var(--glow), inset 0 0 0 1px rgba(255,255,255,.15);
+      border:none; cursor:pointer; position:relative; overflow:hidden; transform:translateZ(0);
+      transition: transform .18s ease, box-shadow .25s ease, filter .25s ease;
+      isolation:isolate;
+    }
+    .cta-btn::after{
+      content:""; position:absolute; inset:-150% -20%;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.6) 50%, transparent 70%);
+      transform: translateX(-60%); pointer-events:none; filter: blur(1px);
+    }
+    .cta-btn:hover{ transform: translateY(-2px); box-shadow: var(--shadow-strong); filter: saturate(110%); }
+    .cta-btn:hover::after{ animation: shine 1.2s ease; }
+    @keyframes shine { to { transform: translateX(60%);} }
+
+    /* Hero */
+    .hero{
+      position:relative; overflow:hidden;
+      background:
+        radial-gradient(1200px 360px at 50% -80px, rgba(14,165,233,.18), transparent),
+        linear-gradient(180deg, #08101b, #0b1524 40%, #0b1524);
+      color:#e6f6ff;
+    }
+    .hero::before{
+      content:""; position:absolute; inset:-20% -10%;
+      background: conic-gradient(from 0deg at 50% 50%, rgba(14,165,233,.18), transparent, rgba(34,211,238,.12), transparent);
+      animation: swirl 18s linear infinite;
+    }
+    @keyframes swirl { to { transform: rotate(360deg);} }
+    .hero .wrap{padding:64px 18px 46px; position:relative; z-index:1}
+    .hero h1{font-size: clamp(28px, 4.8vw, 48px); line-height:1.15; margin:0 0 12px; text-shadow:0 2px 24px rgba(14,165,233,.18); display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+    .hero p.lead{color:#cfe8f8; font-size: clamp(14px, 1.6vw, 18px); margin:0 0 26px}
+    .hero .kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px}
+    .kpi{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18); border-radius:var(--radius); padding:14px 16px; backdrop-filter: blur(6px)}
+    .kpi strong{font-size:20px}
+
+    /* Sections */
+    section{padding:54px 0; background:#fff}
+    section.alt{background:linear-gradient(180deg, #f8fbff, #ffffff)}
+    h2{font-size: clamp(20px, 3vw, 28px); margin:0 0 16px}
+    .sub{color:var(--sub)}
+    .grid{display:grid; gap:16px}
+    .g-2{grid-template-columns:repeat(2,1fr)}
+    .g-3{grid-template-columns:repeat(3,1fr)}
+    .card{
+      background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:18px;
+      box-shadow: var(--shadow); position:relative; overflow:hidden;
+    }
+    .card::after{
+      content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px; background:
+        linear-gradient(90deg, rgba(14,165,233,.24), rgba(34,211,238,.18));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude; pointer-events:none; opacity:.45;
+    }
+    .badge{display:inline-block; font-size:12px; padding:4px 8px; border-radius:999px; background:#e6f6ff; color:#075985; font-weight:700}
+
+    table{width:100%; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden}
+    th,td{border:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top}
+    th{background:#eef6ff}
+    .note{color:var(--muted); font-size:12px}
+
+    /* Flow: horizontal stepper with arrows */
+    .flow-wrap{position:relative}
+    .stepper{
+      display:grid; grid-template-columns: repeat(4,1fr); gap:22px; position:relative; padding-top:18px;
+    }
+    .stepper::before{
+      content:""; position:absolute; top:40px; left:0; right:0; height:4px; border-radius:999px;
+      background:linear-gradient(90deg, rgba(14,165,233,.35), rgba(34,211,238,.35));
+    }
+    .step{ position:relative; text-align:center; padding-top:12px; }
+    .step .dot{ width:28px; height:28px; border-radius:50%;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#fff; display:grid; place-items:center; font-weight:800; margin:0 auto 10px; box-shadow: var(--shadow); position:relative; z-index:1;}
+    .step .label{font-weight:700}
+    .step .desc{color:var(--sub); font-size:14px}
+    .step .arrow{ position:absolute; top:30px; right:-11px; width:0; height:0; border-top:8px solid transparent; border-bottom:8px solid transparent; border-left:11px solid rgba(14,165,233,.6); }
+    .step:last-child .arrow{display:none}
+
+    /* Floating CTA */
+    .cta-float{ position:fixed; right:18px; bottom:18px; z-index:50; backdrop-filter: blur(6px); }
+    .cta-float .cta-btn{ padding:16px 22px; font-size:16px; border-radius:16px; }
+    .cta-float .label{display:inline-flex; align-items:center; gap:8px}
+
+    /* Modal */
+    dialog{border:none; border-radius:16px; width:min(680px,92vw); box-shadow:var(--shadow-strong); padding:0}
+    dialog::backdrop{background:rgba(2,6,23,.55)}
+    .modal{padding:18px}
+    .modal header{position:static; backdrop-filter:none; background:#fff; border-bottom:1px solid var(--line)}
+
+    /* Form */
+    .field{display:grid; gap:6px; margin:10px 0}
+    .field input[type="text"], .field input[type="email"], .field input[type="number"], .field textarea, .field select{
+      width:100%; border:1px solid var(--line); border-radius:12px; padding:10px 12px; font:inherit; transition:border-color .2s ease, box-shadow .2s ease;
+      background:#fff;
+    }
+    .field input:focus, .field textarea:focus, .field select:focus{outline:3px solid rgba(14,165,233,.3); border-color:var(--accent); box-shadow: 0 0 0 3px rgba(14,165,233,.15)}
+    .muted{color:var(--muted)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* Security section: force vertical stack (desktopも縦積み) */
+    #security .stack-vert{display:grid; grid-template-columns:1fr; gap:16px}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .g-2{grid-template-columns:1fr}
+      .g-3{grid-template-columns:1fr}
+      .hero .kpis{grid-template-columns:1fr}
+      .cta-float .cta-btn{padding:14px 18px; font-size:15px}
+      .hero h1{gap:8px}
+      .stepper{grid-template-columns:1fr; gap:16px}
+      .stepper::before{left:20px; right:auto; width:4px; height:100%; top:0; bottom:0; background:linear-gradient(180deg, rgba(14,165,233,.35), rgba(34,211,238,.35))}
+      .step{text-align:left; padding-left:48px}
+      .step .dot{margin:0; position:absolute; left:12px; top:0}
+      .step .arrow{display:none}
+    }
+  </style>
+  <!-- Stripe.js（公開鍵は置き換えてください） -->
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header aria-label="グローバルナビゲーション" id="siteHeader">
+    <div class="wrap nav">
+      <a class="logo" href="#top" aria-label="KITAI ホーム">
+        <!-- 添付の企業ロゴ（JPG）。同フォルダにファイル名：kitai_logo.jpg で配置してください -->
+        <img src="kitai_logo.jpg" alt="KITAI Inc. ロゴ" />
+      </a>
+      <nav class="menu" aria-label="主要メニュー">
+        <a href="#features">機能</a>
+        <a href="#pricing">料金</a>
+        <a href="#flow">導入フロー</a>
+        <a href="#security">セキュリティ</a>
+        <a href="#faq">FAQ</a>
+        <button class="cta-btn" id="ctaTop" aria-label="今すぐ無料で始める">今すぐ無料で始めましょう！</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Floating CTA -->
+  <div class="cta-float" aria-hidden="false">
+    <button class="cta-btn" id="ctaFloat" aria-label="今すぐ無料で始める（フローティング）">
+      <span class="label">🚀 今すぐ無料で始めましょう！</span>
+    </button>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="top" aria-label="ヒーロー">
+    <canvas id="fx" aria-hidden="true" style="position:absolute; inset:0; z-index:0; opacity:.25;"></canvas>
+    <div class="wrap">
+      <!-- InsightSprintをロゴで -->
+      <h1 class="reveal" aria-label="InsightSprint｜調査データ分析サービス">
+        <span class="sr-only">InsightSprint</span>
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false" style="height:34px;width:auto">
+          <defs><linearGradient id="isGrad2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0ea5e9"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs>
+          <line x1="6" y1="24" x2="20" y2="24" stroke="url(#isGrad2)" stroke-width="4" stroke-linecap="round"/>
+          <line x1="10" y1="32" x2="22" y2="32" stroke="url(#isGrad2)" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+          <line x1="14" y1="40" x2="24" y2="40" stroke="url(#isGrad2)" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+          <circle cx="34" cy="30" r="14" fill="none" stroke="url(#isGrad2)" stroke-width="4"/>
+          <rect x="26" y="34" width="4" height="8" fill="url(#isGrad2)" rx="1"/>
+          <rect x="32" y="30" width="4" height="12" fill="url(#isGrad2)" rx="1"/>
+          <rect x="38" y="26" width="4" height="16" fill="url(#isGrad2)" rx="1"/>
+          <line x1="44" y1="44" x2="56" y2="56" stroke="url(#isGrad2)" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        ｜調査データ分析サービス
+      </h1>
+
+      <p class="lead reveal" style="transition-delay:.05s">アンケートのローデータをお渡しいただくだけ。生成AI×専門知見により、<strong>翌営業日</strong>に意思決定に使えるPDFレポートを納品。エンタープライズ／広告代理店の現場で求められる「速度」「説明責任」「調達容易性」を同時に満たします。</p>
+      <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap" class="reveal" style="transition-delay:.1s">
+        <button class="cta-btn cta-primary" id="ctaHero" aria-label="今すぐ無料で始める">今すぐ無料で始めましょう！</button>
+        <a href="#pricing" class="cta-btn" style="background:transparent; color:#e6f6ff; border:2px solid rgba(255,255,255,.4)">料金を見る</a>
+      </div>
+      <div class="kpis reveal" style="transition-delay:.12s">
+        <div class="kpi"><div class="badge">スピード</div><div><strong>翌営業日</strong> 納品</div><small>標準データ体裁が前提</small></div>
+        <div class="kpi"><div class="badge">品質</div><div><strong>差戻し率 ≦5%</strong> 目標</div><small>AI推論＋チェックリスト運用</small></div>
+        <div class="kpi"><div class="badge">調達</div><div><strong>設問数ベース</strong>の明瞭見積</div><small>見積テンプレ/発注要件提示</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="alt">
+    <div class="wrap reveal">
+      <h2>主要価値</h2>
+      <p class="sub">エンタープライズ/代理店現場で必要な要件を、標準テンプレとSLAで担保。</p>
+      <div class="grid g-3" style="margin-top:10px">
+        <div class="card"><h3>即断を後押し</h3><p>翌営業日TATと標準テンプレで会議を動かす。</p></div>
+        <div class="card"><h3>品質の再現性</h3><p>AI推論＋チェックリスト運用で差戻し率≦5%（目標）。</p></div>
+        <div class="card"><h3>調達に強い</h3><p>設問数ベースの明瞭見積。<br>見積テンプレ/発注要件を提示。</p></div>
+        <div class="card"><h3>説明責任を担保</h3><p>出典/注釈/集計条件を明記。PPTへ容易に転用。</p></div>
+        <div class="card"><h3>セキュリティ</h3><p>AES-256保管・TLS転送・MFA・ログ90日保持。顧客データは学習不使用。</p></div>
+        <div class="card"><h3>FA分析</h3><p>自由回答の要約・分類・キーワード抽出に対応。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Templates -->
+  <section id="templates">
+    <div class="wrap reveal">
+      <h2>用途別テンプレート</h2>
+      <p class="sub">ブランドトラッキング速報 / キャンペーンAB検証 / 新規提案の裏付け など</p>
+      <div class="grid g-3" style="margin-top:10px">
+        <article class="card"><h3>ブランドトラッキング速報</h3><p>月次/週次のインサイト確認を翌営業日で。</p></article>
+        <article class="card"><h3>施策AB検証</h3><p>施策切替の判断材料を即日で共有。</p></article>
+        <article class="card"><h3>提案の裏付け</h3><p>ピッチで示唆と根拠を1枚に集約（PPT連携）。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="alt">
+    <div class="wrap reveal">
+      <h2>料金（税別）</h2>
+      <div class="card">
+        <div style="overflow:auto">
+          <table aria-label="料金表" id="pricingTable">
+            <thead><tr><th>設問数</th><th>料金</th><th>納期目安</th><th>カード払い</th></tr></thead>
+            <tbody>
+              <tr data-qmin="1" data-qmax="10"><td>1〜10問</td><td data-price="79000">79,000円</td><td>原則 翌営業日</td><td><button class="cta-btn" data-pay-tier="10">カードで支払う</button></td></tr>
+              <tr data-qmin="11" data-qmax="30"><td>11〜30問</td><td data-price="99000">99,000円</td><td>原則 翌営業日</td><td><button class="cta-btn" data-pay-tier="30">カードで支払う</button></td></tr>
+              <tr data-qmin="31" data-qmax="50"><td>31〜50問</td><td data-price="119000">119,000円</td><td>原則 翌営業日</td><td><button class="cta-btn" data-pay-tier="50">カードで支払う</button></td></tr>
+              <tr data-qmin="51" data-qmax="9999"><td>51問〜</td><td data-price="-1">Ask</td><td>ご相談</td><td><span class="muted">個別見積</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">※ 設問数に応じたシンプルな料金。標準データ体裁での想定です。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Options -->
+  <section id="options">
+    <div class="wrap reveal">
+      <h2>オプション（税別）</h2>
+      <div class="card" style="overflow:auto">
+        <table aria-label="オプション">
+          <thead><tr><th>オプション</th><th>内容</th><th>料金（税別）</th></tr></thead>
+          <tbody>
+            <tr><td>PowerPoint納品</td><td>編集可能なPPT形式での納品</td><td>1〜10問 22,000円／11〜30問 33,000円／31〜50問 44,000円／51問〜 Ask</td></tr>
+            <tr><td>リサーチャー最終化</td><td>AIレポートを基にプロが最終レポートを作成</td><td>1〜10問 99,000円／11〜30問 149,000円／31〜50問 199,000円／51問〜 Ask</td></tr>
+            <tr><td>FA設問のAI分析</td><td>自由回答テキストの要約・分類・キーワード抽出</td><td>1問あたり 22,000円</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flow -->
+  <section id="flow" class="alt">
+    <div class="wrap reveal flow-wrap">
+      <h2>導入フロー（標準）</h2>
+      <div class="stepper" role="list">
+        <div class="step" role="listitem">
+          <div class="dot">1</div>
+          <div class="label">データ受領</div>
+          <div class="desc">調査概要とローデータをお預かりします。</div>
+          <div class="arrow"></div>
+        </div>
+        <div class="step" role="listitem">
+          <div class="dot">2</div>
+          <div class="label">AI分析</div>
+          <div class="desc">データ処理と集計・分析を実施します。</div>
+          <div class="arrow"></div>
+        </div>
+        <div class="step" role="listitem">
+          <div class="dot">3</div>
+          <div class="label">納品</div>
+          <div class="desc">原則、翌営業日にPDFレポートを納品します。</div>
+          <div class="arrow"></div>
+        </div>
+        <div class="step" role="listitem">
+          <div class="dot">4</div>
+          <div class="label">オプション対応</div>
+          <div class="desc">PPT納品／最終化／FA分析は個別スケジュールで対応。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security -->
+  <section id="security">
+    <div class="wrap reveal">
+      <h2>NDA / セキュリティ（要点）</h2>
+      <!-- ここから縦並び -->
+      <div class="stack-vert">
+        <ul class="card">
+          <li><strong>NDA：</strong>秘密情報の範囲に設問票/ローデータ/出力物を明示。存続3〜5年（調整可）。</li>
+          <li><strong>データ取扱い：</strong>保存時AES-256、転送時TLS。納品後30〜90日で安全消去（証跡提供可）。</li>
+          <li><strong>アクセス制御：</strong>最小権限・MFA。アクセスログは90日以上保持。第三者再提供は禁止。</li>
+          <li><strong>生成AI利用：</strong>顧客データは学習用途に不使用。外部推論は契約条件に準拠。</li>
+          <li><strong>個人情報：</strong>仮名加工または削除の上で処理。</li>
+        </ul>
+        <div class="card">
+          <h3>期待KPI（例）</h3>
+          <table>
+            <thead><tr><th>カテゴリ</th><th>KPI 指標</th><th>初期目標値</th></tr></thead>
+            <tbody>
+              <tr><td>スピード</td><td>初回レポートTAT（営業日）</td><td>1.0（翌営業日納品達成率90%以上）</td></tr>
+              <tr><td>品質</td><td>レポート差戻し率</td><td>≦5%</td></tr>
+              <tr><td>活用度</td><td>週次会議での活用率</td><td>≧80%</td></tr>
+              <tr><td>コスト</td><td>外部追加委託比率</td><td>▲20%</td></tr>
+              <tr><td>満足度</td><td>ステークホルダー満足度（5段階）</td><td>≧4.2</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- 縦並びここまで -->
+    </div>
+  </section>
+
+  <!-- SLA -->
+  <section id="sla" class="alt">
+    <div class="wrap reveal">
+      <h2>SLA（例）</h2>
+      <div class="card" style="overflow:auto">
+        <table>
+          <thead><tr><th>項目</th><th>SLA水準</th><th>備考</th></tr></thead>
+          <tbody>
+            <tr><td>納期遵守率</td><td>≧90%（翌営業日）</td><td>標準データ体裁が前提</td></tr>
+            <tr><td>初回応答時間</td><td>1営業日以内</td><td>問い合わせ受付からの初回返信</td></tr>
+            <tr><td>サポート対応</td><td>平日 9:00〜18:00（JST）</td><td>メール／オンライン会議</td></tr>
+            <tr><td>再納品ポリシー</td><td>軽微修正 1回まで無償</td><td>構成変更や深掘り分析は別途見積</td></tr>
+            <tr><td>データ保持</td><td>納品後30〜90日で安全消去</td><td>期間は契約で調整可</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap reveal">
+      <h2>FAQ</h2>
+      <div class="grid g-2">
+        <div class="card"><h3>どのようなデータ形式に対応していますか？</h3><p>CSV/TSV/XLSXなどの表形式データを想定しています。設問票と対応表があると最短で進行できます。</p></div>
+        <div class="card"><h3>翌営業日納品は必ず可能ですか？</h3><p>標準体裁が前提です。大量のFAや特殊集計は追加日程のご相談となります。</p></div>
+        <div class="card"><h3>レポートの体裁は？</h3><p>PDFを標準納品。PPTオプションにて編集可能な形でも提供可能です。</p></div>
+        <div class="card"><h3>セキュリティ要件への適合が必要です。</h3><p>NDA/アクセス制御/データ保持ポリシーを契約に明記します。監査対応も相談可。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="alt">
+    <div class="wrap reveal">
+      <div class="cta">
+        <div><strong>翌営業日の“使える”レポート。</strong><br>まずは調査票とローデータで<strong>無料見積</strong>をご依頼ください。</div>
+        <button class="cta-btn" id="ctaBottom">今すぐ無料で始めましょう！</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <small>© 2025 KITAI Inc. / 本サイトは『InsightSprint』の紹介ページです。正式数値は契約時に確定します。</small>
+    </div>
+  </footer>
+
+  <!-- Get Started Modal + Payment -->
+  <dialog id="startModal" aria-labelledby="startTitle">
+    <form method="dialog" class="modal" id="startFormWrapper" novalidate>
+      <header class="nav" style="height:auto; padding:12px 18px">
+        <h3 id="startTitle" style="margin:0">無料で始める（お見積 & カード決済）</h3>
+        <button value="close" aria-label="閉じる" style="border:none; background:transparent; font-size:20px; cursor:pointer">✕</button>
+      </header>
+      <div style="padding:0 18px 18px">
+        <p class="muted">設問数とファイルを入力すると、自動で概算見積を算出します。見積後、そのままクレジットカードでお支払いできます。</p>
+
+        <div class="field">
+          <label for="org">会社名 <span class="muted">(必須)</span></label>
+          <input id="org" name="org" type="text" required placeholder="KITAI株式会社" />
+        </div>
+        <div class="field">
+          <label for="name">ご担当者名 <span class="muted">(必須)</span></label>
+          <input id="name" name="name" type="text" required placeholder="山田 太郎" />
+        </div>
+        <div class="field">
+          <label for="email">メールアドレス <span class="muted">(必須)</span></label>
+          <input id="email" name="email" type="email" inputmode="email" required placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label for="qcount">設問数（合計） <span class="muted">(必須)</span></label>
+          <input id="qcount" name="qcount" type="number" min="1" step="1" required placeholder="例) 25" />
+        </div>
+        <div class="field">
+          <label for="faCount">FA（自由回答）設問数 <span class="muted">(任意)</span></label>
+          <input id="faCount" name="faCount" type="number" min="0" step="1" placeholder="例) 2" />
+          <small class="muted">※ FAは1問あたり 22,000円（オプション）</small>
+        </div>
+        <div class="field">
+          <label for="files">ファイル添付（設問票・ローデータ）</label>
+          <input id="files" name="files" type="file" multiple />
+        </div>
+
+        <div class="card" id="quoteBox" aria-live="polite">
+          <strong>概算見積</strong>
+          <div id="quoteResult" class="muted">設問数を入力してください。</div>
+        </div>
+
+        <!-- 支払いパネル -->
+        <div class="card" id="payPanel" style="display:none">
+          <strong>クレジットカードで支払う</strong>
+          <div class="muted" style="margin:6px 0 8px">金額と明細をご確認の上、カード決済へお進みください（Stripe Checkout）。</div>
+          <ul style="margin:0; padding-left:18px; font-size:14px; color:var(--sub)">
+            <li>会社名・ご担当者名・メールを元に領収書（自動発行）を送付</li>
+            <li>税込み/請求書払い等が必要な場合は送信のみ行い、後日ご案内します</li>
+          </ul>
+          <div style="display:flex; gap:10px; align-items:center; margin-top:10px; flex-wrap:wrap">
+            <button type="button" id="payNow" class="cta-btn" disabled>クレジットカードで支払う</button>
+            <span id="payNote" class="muted">見積が確定すると有効になります</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">補足</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="納期や集計条件など"></textarea>
+        </div>
+
+        <div style="display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap:wrap">
+          <button class="cta-btn" id="submitStart" type="submit" value="submit">送信する</button>
+          <label style="display:flex; align-items:center; gap:6px"><input id="agree" type="checkbox" required /> 利用規約と個人情報の取扱いに同意します。</label>
+        </div>
+
+        <p class="note" style="margin-top:8px">お急ぎの場合：平日 9:00〜18:00（JST） / Tel: 03-XXXX-XXXX</p>
+      </div>
+
+      <template id="thanksTpl">
+        <div style="padding:18px">
+          <h3>送信が完了しました</h3>
+          <p>ご依頼ありがとうございます。担当より<em>1営業日以内</em>にご連絡します。</p>
+          <div class="card">
+            <strong>控え</strong>
+            <div id="summary"></div>
+          </div>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+            <button class="cta-btn" value="close">閉じる</button>
+            <a class="cta-btn" href="#pricing" style="background:transparent; color:var(--accent); border:2px solid var(--accent)">料金へ戻る</a>
+          </div>
+        </div>
+      </template>
+    </form>
+  </dialog>
+
+  <!-- Stripe.js（公開鍵は置き換え） -->
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    // ===== Stripe instance（公開鍵を差し替えてください） =====
+    const STRIPE_PUBLISHABLE_KEY = "pk_test_xxxxxxxxxxxxxxxxxxxxx"; // TODO: 置き換え
+    const stripe = window.Stripe ? Stripe(STRIPE_PUBLISHABLE_KEY) : null;
+
+    // ===== Common refs =====
+    const startModal = document.getElementById('startModal');
+
+    // ===== Open modal from any CTA (incl. floating) =====
+    for (const id of ['ctaTop','ctaHero','ctaBottom','ctaFloat']){
+      const el = document.getElementById(id);
+      if(el){ el.addEventListener('click', () => startModal.showModal()); }
+    }
+
+    // ===== Header shadow on scroll =====
+    const header = document.getElementById('siteHeader');
+    const onScroll = () => { if(window.scrollY > 6) header.classList.add('is-scrolled'); else header.classList.remove('is-scrolled'); };
+    window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+    // ===== Reveal on scroll =====
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // ===== Pricing Table shortcuts =====
+    const pricingTable = document.getElementById('pricingTable');
+    if (pricingTable) {
+      pricingTable.querySelectorAll('button[data-pay-tier]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const tier = parseInt(btn.getAttribute('data-pay-tier'),10);
+          startModal.showModal();
+          const qInput = document.getElementById('qcount');
+          if (qInput) {
+            qInput.value = tier; qInput.dispatchEvent(new Event('input'));
+            setTimeout(()=>document.getElementById('payPanel')?.scrollIntoView({behavior:'smooth', block:'center'}), 150);
+          }
+        });
+      });
+    }
+
+    // ===== Quote calculation aligned with pricing =====
+    const qcount = document.getElementById('qcount');
+    const faCount = document.getElementById('faCount');
+    const quoteResult = document.getElementById('quoteResult');
+    const payPanel = document.getElementById('payPanel');
+    const payNow = document.getElementById('payNow');
+    const payNote = document.getElementById('payNote');
+
+    function calcQuote(){
+      const q = parseInt(qcount.value, 10);
+      const fa = parseInt(faCount.value || '0', 10);
+      if (!q || q < 1){
+        quoteResult.textContent = '設問数を入力してください。';
+        if (payPanel) payPanel.style.display = 'none';
+        if (payNow) payNow.disabled = true;
+        return;
+      }
+      let base = 0, tier = '';
+      if (q <= 10){ base = 79000; tier = '1〜10問'; }
+      else if (q <= 30){ base = 99000; tier = '11〜30問'; }
+      else if (q <= 50){ base = 119000; tier = '31〜50問'; }
+      else {
+        quoteResult.innerHTML = `設問数: <strong>${q}問</strong> / 料金: <strong>Ask</strong>（個別お見積）`;
+        if (payPanel) payPanel.style.display = 'none';
+        if (payNow) payNow.disabled = true;
+        return;
+      }
+      const faFee = fa > 0 ? fa * 22000 : 0;
+      const total = base + faFee;
+      quoteResult.innerHTML =
+        `設問数: <strong>${q}問（${tier}）</strong><br>
+         基本料金: <strong>${base.toLocaleString()}円</strong>${fa>0?` + FA(${fa}問): <strong>${faFee.toLocaleString()}円</strong>`:''}<br>
+         概算合計: <strong style="font-size:18px">${total.toLocaleString()}円（税別）</strong>`;
+
+      if (payPanel) payPanel.style.display = 'block';
+      if (payNow) payNow.disabled = false;
+      if (payNote) payNote.textContent = 'この内容でカード決済に進みます（税別）';
+    }
+    if(qcount && faCount){ qcount.addEventListener('input', calcQuote); faCount.addEventListener('input', calcQuote); }
+
+    // ===== Submit (simulate), validate, store, thanks =====
+    const form = document.getElementById('startFormWrapper');
+    if(form){
+      form.addEventListener('submit', (e) => {
+        if (form.returnValue === 'close') return;
+        e.preventDefault();
+        const req = ['org','name','email','qcount','agree'];
+        for (const id of req){
+          const el = document.getElementById(id);
+          if ((el.type === 'checkbox' && !el.checked) || (!el.value)){
+            el.focus(); alert('未入力の必須項目があります'); return;
+          }
+        }
+        const data = collectFormData();
+        localStorage.setItem('insightsprint_lead', JSON.stringify(data));
+        renderThanks(data);
+      });
+    }
+
+    function collectFormData(){
+      return {
+        org: document.getElementById('org').value.trim(),
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        qcount: parseInt(document.getElementById('qcount').value, 10),
+        faCount: parseInt(document.getElementById('faCount').value || '0', 10),
+        notes: document.getElementById('notes').value.trim(),
+        when: new Date().toLocaleString()
+      };
+    }
+
+    function renderThanks(data){
+      const tpl = document.getElementById('thanksTpl');
+      const clone = tpl.content.cloneNode(true);
+      const box = clone.querySelector('#summary');
+      const faFee = data.faCount * 22000;
+      let base = 0;
+      if (data.qcount <= 10) base = 79000;
+      else if (data.qcount <= 30) base = 99000;
+      else if (data.qcount <= 50) base = 119000;
+      const total = base + faFee;
+      box.innerHTML = `
+        <div>会社名：<strong>${data.org}</strong></div>
+        <div>氏名：<strong>${data.name}</strong></div>
+        <div>メール：<strong>${data.email}</strong></div>
+        <div>設問数：<strong>${data.qcount}問</strong> / FA：<strong>${data.faCount}問</strong></div>
+        <div>概算合計（税別）：<strong>${base>0? total.toLocaleString()+'円':'Ask'}</strong></div>
+        <div>送信日時：${data.when}</div>
+      `;
+      form.innerHTML = ''; form.appendChild(clone);
+    }
+
+    // ===== Payment: Stripe Checkout =====
+    if (document.getElementById('payNow')){
+      document.getElementById('payNow').addEventListener('click', async () => {
+        const must = ['org','name','email','qcount','agree'];
+        for (const id of must){
+          const el = document.getElementById(id);
+          if ((el.type === 'checkbox' && !el.checked) || (!el.value)){
+            el && el.focus(); alert('お支払い前に、必須項目と見積を完了してください。'); return;
+          }
+        }
+        const data = collectFormData();
+        if (data.qcount > 50){ alert('51問以上は個別見積のため、カード決済はご利用いただけません。'); return; }
+        const base = data.qcount<=10?79000: data.qcount<=30?99000:119000;
+        const faFee = data.faCount * 22000;
+        const amount = base + faFee; // JPYは1円単位
+
+        if (!window.Stripe || !stripe){ alert('Stripeの初期化に失敗しました。公開鍵を確認してください。'); return; }
+
+        try{
+          const res = await fetch('/api/create-checkout-session', {
+            method:'POST', headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({
+              currency: 'JPY', amount,
+              customer_email: data.email,
+              metadata: { org: data.org, contact_name: data.name, qcount: String(data.qcount), fa_count: String(data.faCount), notes: data.notes || '' },
+              line_items: [
+                { name: 'InsightSprint 基本料金', amount: base, currency:'JPY', quantity:1 },
+                ...(data.faCount>0 ? [{ name:`FA分析 (${data.faCount}問)`, amount: faFee, currency:'JPY', quantity:1 }] : [])
+              ],
+              success_url: window.location.origin + window.location.pathname + '#success',
+              cancel_url: window.location.origin + window.location.pathname + '#cancel'
+            })
+          });
+          if (!res.ok){ throw new Error('セッション作成に失敗：' + await res.text()); }
+          const { sessionId } = await res.json();
+          const { error } = await stripe.redirectToCheckout({ sessionId });
+          if (error) throw error;
+        } catch(err){ console.error(err); alert('決済を開始できませんでした。後ほど再度お試しください。'); }
+      });
+    }
+
+    // ===== Lightweight parallax particles in hero canvas =====
+    const canvas = document.getElementById('fx');
+    if(canvas){
+      const ctx = canvas.getContext('2d');
+      let w, h, particles = [];
+      const R = () => Math.random();
+      const resize = () => { w = canvas.width = canvas.offsetWidth; h = canvas.height = canvas.offsetHeight; };
+      window.addEventListener('resize', resize); resize();
+      const init = () => {
+        particles = Array.from({length: 36}, ()=>({ x: R()*w, y: R()*h*.7 + h*.05, r: R()*2+0.6, a: R()*Math.PI*2, s: R()*0.4+0.2 }));
+      };
+      init();
+      let mx = 0, my = 0;
+      window.addEventListener('mousemove', e=>{
+        const rect = canvas.getBoundingClientRect();
+        mx = (e.clientX - rect.left)/w - .5; my = (e.clientY - rect.top)/h - .5;
+      }, {passive:true});
+      function loop(){
+        ctx.clearRect(0,0,w,h);
+        particles.forEach(p=>{
+          p.x += Math.cos(p.a)*p.s*0.2 + mx*0.6;
+          p.y += Math.sin(p.a)*p.s*0.2 + my*0.6;
+          p.a += 0.01;
+          if(p.x<-10) p.x=w+10; if(p.x>w+10) p.x=-10;
+          if(p.y<-10) p.y=h+10; if(p.y>h+10) p.y=-10;
+          const g = ctx.createLinearGradient(p.x-p.r, p.y-p.r, p.x+p.r, p.y+p.r);
+          g.addColorStop(0, 'rgba(14,165,233,.55)'); g.addColorStop(1, 'rgba(34,211,238,.45)');
+          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+        });
+        requestAnimationFrame(loop);
+      }
+      loop();
+    }
+  </script>
+</body>
+</html>

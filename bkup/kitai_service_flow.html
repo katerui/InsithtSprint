@@ -1,0 +1,95 @@
+<section id="service-flow" class="flow-block" aria-labelledby="flow-title">
+  <style>
+    .flow-block{
+      --ink:#0f172a;--sub:#475569;--muted:#94a3b8;--stroke:#e2e8f0;--surface:#ffffff;--brand:#0284c7;--brand-2:#7dd3fc;
+      --radius:16px;--shadow:0 6px 20px rgba(15,23,42,.06);
+      font-family:system-ui,-apple-system,'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;
+      color:var(--ink);background:var(--surface);line-height:1.75;
+    }
+    .flow-wrap{max-width:1080px;margin:0 auto;padding:64px 24px}
+    #flow-title{text-align:center;font-size:clamp(22px,3vw,32px);margin:0 0 8px}
+    .lead{text-align:center;color:var(--sub);margin:0 0 60px}
+
+    .flow-diagram{display:flex;flex-direction:column;gap:28px;margin-bottom:80px}
+    .flow-row{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:nowrap;position:relative}
+    @media(max-width:900px){.flow-row{flex-wrap:wrap;gap:16px}}
+    
+    .flow-row::before{content:"";position:absolute;top:50%;left:3%;right:3%;height:4px;background:linear-gradient(90deg,var(--brand),var(--brand-2),var(--brand));background-size:200% 100%;animation:lineflow 12s linear infinite;transform:translateY(-50%);z-index:0;opacity:.9}
+
+    .flow-node{flex:1;text-align:center;background:linear-gradient(180deg,#f0f9ff,#e0f2fe);border:none;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);font-weight:700;position:relative;min-width:120px;min-height:80px;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:1;opacity:0;transform:translateY(20px);animation:fadeUp .6s ease forwards;transition:transform .18s ease,box-shadow .22s ease,background-color .18s ease}
+    .flow-node::before{content:"";position:absolute;inset:-4px;border-radius:calc(var(--radius) + 6px);box-shadow:0 0 0 0 rgba(2,132,199,0);transition:box-shadow .25s ease;pointer-events:none}
+    .flow-node:hover,.flow-node:focus-visible{transform:translateY(-4px);box-shadow:0 10px 28px rgba(15,23,42,.12);background:#e8f5ff}
+    .flow-node:hover::before,.flow-node:focus-visible::before{box-shadow:0 0 0 6px rgba(2,132,199,.12)}
+
+    /* STEP ラベルに丸囲み背景を追加 */
+    .flow-node span{
+      font-size:10px;color:#0284c7;display:inline-block;margin-bottom:8px;letter-spacing:.5px;font-weight:600;
+      padding:4px 10px;border-radius:9999px;background:#e0f2fe;border:1px solid #7dd3fc;
+    }
+
+    .flow-diagram .flow-row:nth-child(1) .flow-node:nth-child(1){animation-delay:.1s}
+    .flow-diagram .flow-row:nth-child(1) .flow-node:nth-child(2){animation-delay:.2s}
+    .flow-diagram .flow-row:nth-child(1) .flow-node:nth-child(3){animation-delay:.3s}
+    .flow-diagram .flow-row:nth-child(1) .flow-node:nth-child(4){animation-delay:.4s}
+    .flow-diagram .flow-row:nth-child(1) .flow-node:nth-child(5){animation-delay:.5s}
+    .flow-diagram .flow-row:nth-child(2) .flow-node:nth-child(1){animation-delay:.6s}
+    .flow-diagram .flow-row:nth-child(2) .flow-node:nth-child(2){animation-delay:.7s}
+    .flow-diagram .flow-row:nth-child(2) .flow-node:nth-child(3){animation-delay:.8s}
+    .flow-diagram .flow-row:nth-child(2) .flow-node:nth-child(4){animation-delay:.9s}
+    .flow-diagram .flow-row:nth-child(2) .flow-node:nth-child(5){animation-delay:1s}
+
+    @keyframes fadeUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+    @keyframes lineflow{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+
+    @media(max-width:900px){.flow-diagram{flex-direction:column;align-items:center;gap:24px}.flow-diagram::before{display:none}}
+
+    table.flow-table{width:100%;border-collapse:collapse;margin-top:64px;font-size:15px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    table.flow-table th,table.flow-table td{border:1px solid var(--stroke);padding:12px 16px;text-align:left;vertical-align:top}
+    table.flow-table th{background:#f1f5f9;font-weight:700;color:#0f172a}
+    table.flow-table tr:nth-child(even){background:#f9fafb}
+
+    .note{margin-top:40px;font-size:14px;color:var(--sub);text-align:center}
+  </style>
+
+  <div class="flow-wrap">
+    <h2 id="flow-title">サービスの流れ</h2>
+    <p class="lead">申込から最終納品まで、平均2〜3営業日で完了します。</p>
+
+    <div class="flow-diagram" aria-label="10ステップ概要">
+      <div class="flow-row">
+        <div class="flow-node" tabindex="0"><span>STEP 1</span>申込</div>
+        <div class="flow-node" tabindex="0"><span>STEP 2</span>要件確認</div>
+        <div class="flow-node" tabindex="0"><span>STEP 3</span>発注</div>
+        <div class="flow-node" tabindex="0"><span>STEP 4</span>データ送付</div>
+        <div class="flow-node" tabindex="0"><span>STEP 5</span>AIレポート作成</div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-node" tabindex="0"><span>STEP 6</span>ドラフト納品</div>
+        <div class="flow-node" tabindex="0"><span>STEP 7</span>修正対応</div>
+        <div class="flow-node" tabindex="0"><span>STEP 8</span>最終納品</div>
+        <div class="flow-node" tabindex="0"><span>STEP 9</span>請求</div>
+        <div class="flow-node" tabindex="0"><span>STEP 10</span>データ削除</div>
+      </div>
+    </div>
+
+    <table class="flow-table" aria-label="役割・入出力・目安">
+      <thead>
+        <tr><th>#</th><th>フェーズ</th><th>目的</th><th>主担当</th><th>主な入出力</th><th>目安</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>申込</td><td>依頼内容の整理</td><td>お客様</td><td>入：フォーム／出：受付確認</td><td>1営業日以内</td></tr>
+        <tr><td>2</td><td>要件確認</td><td>内容の確定</td><td>KITAI</td><td>入：一次情報／出：確認書</td><td>1〜3営業日</td></tr>
+        <tr><td>3</td><td>発注</td><td>作業開始の確定</td><td>お客様</td><td>入：承認／出：発注書</td><td>承認後</td></tr>
+        <tr><td>4</td><td>データ送付</td><td>安全なデータ共有</td><td>双方</td><td>入：調査データ／出：確認連絡</td><td>当日〜1営業日</td></tr>
+        <tr><td>5</td><td>AIレポート作成</td><td>初稿の生成</td><td>KITAI</td><td>入：確認済データ／出：レポート案</td><td>翌営業日（データ送付の翌日）</td></tr>
+        <tr><td>6</td><td>ドラフト納品</td><td>内容確認</td><td>KITAI</td><td>出：PDFドラフト</td><td>翌営業日</td></tr>
+        <tr><td>7</td><td>修正対応</td><td>最終調整</td><td>双方</td><td>入：修正指示／出：改訂版</td><td>2営業日以内</td></tr>
+        <tr><td>8</td><td>最終納品</td><td>成果物納品</td><td>KITAI</td><td>出：PDF／PPT</td><td>1営業日</td></tr>
+        <tr><td>9</td><td>請求</td><td>取引完了</td><td>KITAI</td><td>出：請求書</td><td>納品後</td></tr>
+        <tr><td>10</td><td>データ削除</td><td>安全な終了処理</td><td>KITAI</td><td>出：削除報告（希望時）</td><td>30〜90日以内</td></tr>
+      </tbody>
+    </table>
+
+    <p class="note">※ データ送付後、翌営業日にドラフト納品が完了。<br>平均2〜3営業日で最終納品まで完了します。</p>
+  </div>
+</section>
