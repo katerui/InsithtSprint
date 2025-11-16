@@ -386,7 +386,7 @@
           </div>
         </form>
         <script>
-          // GAS の WebアプリURL（手順3で取得したもの）を貼り付け
+          // GAS の Webアプリ URL
           const SCRIPT_URL =
             "https://script.google.com/macros/s/AKfycbx89s3XTL_ubxFrW023mY63erOXFfQHIJIbCfn29chyEunCNiDmPm-fV73FFPB0maq1mw/exec";
 
@@ -399,18 +399,14 @@
             const params = new URLSearchParams(formData);
 
             try {
-              const res = await fetch(SCRIPT_URL, {
+              // CORS 制約を避けるため no-cors で投げっぱなしにする
+              await fetch(SCRIPT_URL, {
                 method: "POST",
                 body: params,
+                mode: "no-cors",
               });
 
-              if (!res.ok) {
-                throw new Error("送信エラー");
-              }
-
-              // 必要に応じてレスポンスJSONを確認
-              // const data = await res.json();
-
+              // ここまで来れば「ブラウザはエラーを検知していない」とみなしてよい
               alert("お問い合わせを送信しました。ありがとうございます。");
               form.reset();
             } catch (error) {
