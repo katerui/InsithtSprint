@@ -386,38 +386,38 @@
           </div>
         </form>
         <script>
-                              // GAS の WebアプリURL（手順3で取得したもの）を貼り付け
-                              const SCRIPT_URL =
-          https://script.google.com/macros/s/AKfycbwBq49LYV9KPtDaoaIWMdNl2Z4OszrAtpEaXOxioGv3bH6yduuoe3mmURpzCB4nHDHeHw/exec
+                                        // GAS の WebアプリURL（手順3で取得したもの）を貼り付け
+                                        const SCRIPT_URL =
+          https://script.google.com/macros/library/d/1C-qtt7dwiKrctdU3ZRBczfQQ6Lv92IrxulFJTOv20kKcXnuJRv9QQxvd/3
 
-                              const form = document.getElementById("contact-form");
+                                        const form = document.getElementById("contact-form");
 
-                              form.addEventListener("submit", async function (e) {
-                                e.preventDefault(); // 画面遷移を防ぐ
+                                        form.addEventListener("submit", async function (e) {
+                                          e.preventDefault(); // 画面遷移を防ぐ
 
-                                const formData = new FormData(form);
-                                const params = new URLSearchParams(formData);
+                                          const formData = new FormData(form);
+                                          const params = new URLSearchParams(formData);
 
-                                try {
-                                  const res = await fetch(SCRIPT_URL, {
-                                    method: "POST",
-                                    body: params,
-                                  });
+                                          try {
+                                            const res = await fetch(SCRIPT_URL, {
+                                              method: "POST",
+                                              body: params,
+                                            });
 
-                                  if (!res.ok) {
-                                    throw new Error("送信エラー");
-                                  }
+                                            if (!res.ok) {
+                                              throw new Error("送信エラー");
+                                            }
 
-                                  // 必要に応じてレスポンスJSONを確認
-                                  // const data = await res.json();
+                                            // 必要に応じてレスポンスJSONを確認
+                                            // const data = await res.json();
 
-                                  alert("お問い合わせを送信しました。ありがとうございます。");
-                                  form.reset();
-                                } catch (error) {
-                                  console.error(error);
-                                  alert("送信に失敗しました。時間をおいて再度お試しください。");
-                                }
-                              });
+                                            alert("お問い合わせを送信しました。ありがとうございます。");
+                                            form.reset();
+                                          } catch (error) {
+                                            console.error(error);
+                                            alert("送信に失敗しました。時間をおいて再度お試しください。");
+                                          }
+                                        });
         </script>
       </section>
 
