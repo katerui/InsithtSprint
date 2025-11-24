@@ -8,20 +8,26 @@
       name="description"
       content="ご依頼・ご相談・見積・パートナー連携などのお問い合わせフォームです。"
     />
+    <link rel="canonical" href="https://insightsprint.jp/contact.html" />
+
+    <!-- ▼ privacy.html / terms.html と同じベースデザイン -->
     <style>
       :root {
-        --bg: #f6f7fb;
-        --ink: #0f172a;
+        --bg: #ffffff;
+        --card: #ffffff;
+        --ink: #1f2937;
         --muted: #6b7280;
         --brand: #6f3faf;
         --accent: #b893f2;
         --stroke: #e5e7eb;
-        --radius: 16px;
-        --shadow: 0 12px 36px rgba(2, 6, 23, 0.1);
+        --shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+        --radius: 18px;
       }
+
       * {
         box-sizing: border-box;
       }
+
       html,
       body {
         margin: 0;
@@ -29,80 +35,187 @@
         background: var(--bg);
         color: var(--ink);
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, "Noto Sans JP", Arial, sans-serif;
+          Roboto, "Helvetica Neue", Arial, "Noto Sans JP",
+          "Hiragino Kaku Gothic ProN", "Yu Gothic UI", sans-serif;
         line-height: 1.7;
       }
+
       a {
         color: var(--brand);
         text-decoration: none;
       }
 
-      /* ラッパー（外枠は付けない） */
-      .wrap {
-        width: min(1060px, 92vw);
-        margin-inline: auto;
-        padding: 32px 0;
+      img {
+        max-width: 100%;
+        height: auto;
       }
 
-      /* ===== Header & Nav ===== */
-      header {
-        padding: 8px 0 18px;
+      .wrap {
+        width: min(1100px, 92vw);
+        margin-inline: auto;
       }
-      .mast {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        margin-bottom: 10px;
+
+      .grid {
+        display: grid;
+        gap: 24px;
       }
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 900;
-        letter-spacing: 0.02em;
+
+      .card {
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 28px;
+        border: 1px solid var(--stroke);
+        position: relative;
+        overflow: hidden;
       }
-      .brand img {
-        height: 38px;
-        width: auto;
+
+      .section {
+        padding: 70px 0;
       }
-      .brand .ttl {
-        font-size: 18px;
-        color: #111827;
-      }
-      nav.primary {
-        display: flex;
-        gap: 18px;
-        align-items: center;
-      }
-      nav.primary a,
-      nav.primary .current {
-        font-size: 14px;
-        font-weight: 700;
-        padding: 8px 12px;
-        border-radius: 999px;
-      }
-      nav.primary a:hover {
-        background: #efe7ff;
-      }
-      nav.primary .current {
-        color: #fff;
-        background: linear-gradient(135deg, var(--brand), var(--accent));
-        cursor: default;
+
+      h1,
+      h2 {
+        line-height: 1.2;
+        margin: 0 0 14px;
       }
 
       h1 {
-        font-size: clamp(26px, 4.6vw, 40px);
-        margin: 6px 0 6px;
-        line-height: 1.2;
-      }
-      .lead {
-        color: var(--muted);
-        margin: 0 0 16px;
-        font-size: 15px;
+        font-size: clamp(28px, 5vw, 40px);
       }
 
-      /* 注意ボックス */
+      h2 {
+        font-size: clamp(20px, 4vw, 26px);
+      }
+
+      h3 {
+        font-size: 18px;
+        margin: 24px 0 8px;
+        color: #374151;
+      }
+
+      p.lead {
+        font-size: clamp(15px, 2.2vw, 18px);
+        color: var(--muted);
+      }
+
+      .title-prefix::before {
+        content: "▏";
+        color: var(--brand);
+        margin-right: 8px;
+      }
+
+      /* Header（privacy / terms と同トーン） */
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 24px 40px;
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: saturate(120%) blur(6px);
+      }
+
+      header img#insight-logo {
+        height: 75px;
+        width: auto;
+        filter: drop-shadow(0 8px 16px rgba(111, 63, 175, 0.18));
+      }
+
+      header img#kitai-logo {
+        height: 55px;
+        width: auto;
+        margin-left: 16px;
+        filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
+      }
+
+      /* KITAIロゴを右端へ押し出す */
+      header a:last-child {
+        margin-left: auto;
+      }
+
+      /* tagline 用フォント（terms / privacy と揃え） */
+      @font-face {
+        font-family: "KaisotaiNextUPB";
+        src: url("./fonts/Kaisotai-Next-UP-B.ttf") format("truetype"),
+          url("./fonts/Kaisotai-Next-UP-B.otf") format("opentype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      .tagline {
+        font-family: "KaisotaiNextUPB", "Yu Gothic UI", "Yu Gothic",
+          "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP",
+          "Noto Sans JP", "Meiryo", sans-serif;
+        font-weight: 700;
+      }
+
+      .reveal-up {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .reveal-up.is-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      /* 画面外のレイアウト/描画を遅延（terms / privacy と合わせる） */
+      header,
+      section,
+      footer {
+        content-visibility: auto;
+        contain-intrinsic-size: 800px;
+      }
+
+      @media (max-width: 900px) {
+        header,
+        section,
+        footer {
+          contain-intrinsic-size: 1000px 900px;
+        }
+
+        header {
+          padding-inline: 20px;
+        }
+
+        header img#insight-logo {
+          height: 72px;
+        }
+
+        header img#kitai-logo {
+          height: 40px;
+        }
+      }
+
+      /* フッター（terms / privacy に合わせる） */
+      footer {
+        padding: 40px 0;
+        color: #6b7280;
+        border-top: 1px solid var(--stroke);
+      }
+
+      footer a {
+        font-size: 14px;
+      }
+
+      /* ===== contact 固有スタイル（フォーム周り） ===== */
+
+      /* お問い合わせページのリード文・注意ボックス */
+      #contact .lead {
+        margin-top: 8px;
+        margin-bottom: 16px;
+      }
+
       .note {
         background: #fff;
         border: 1px dashed var(--stroke);
@@ -110,15 +223,7 @@
         padding: 14px 16px;
         color: #374151;
         margin: 12px 0 24px;
-      }
-
-      /* フォームカードのみ影を付与（ページ外側には枠線なし） */
-      .card {
-        background: #fff;
-        border: 1px solid var(--stroke);
-        border-radius: 18px;
-        box-shadow: var(--shadow);
-        padding: 22px;
+        font-size: 14px;
       }
 
       /* フォーム */
@@ -127,6 +232,7 @@
         grid-template-columns: 1fr 1fr;
         gap: 16px;
       }
+
       @media (max-width: 900px) {
         form {
           grid-template-columns: 1fr;
@@ -140,6 +246,7 @@
         margin-bottom: 6px;
         color: #111827;
       }
+
       .req {
         display: inline-block;
         margin-left: 8px;
@@ -150,6 +257,7 @@
         border-radius: 999px;
         font-weight: 800;
       }
+
       .opt {
         display: inline-block;
         margin-left: 8px;
@@ -161,14 +269,17 @@
       }
 
       .field {
-        grid-column: 1/-1;
+        grid-column: 1 / -1;
       }
+
       .col {
         grid-column: 1;
       }
+
       .col_r {
         grid-column: 2;
       }
+
       @media (max-width: 900px) {
         .col,
         .col_r {
@@ -189,12 +300,14 @@
         outline: none;
         transition: border-color 0.15s, box-shadow 0.15s;
       }
+
       input:focus,
       select:focus,
       textarea:focus {
         border-color: #d9c9fb;
         box-shadow: 0 0 0 3px rgba(184, 147, 242, 0.22);
       }
+
       textarea {
         min-height: 140px;
         resize: vertical;
@@ -206,27 +319,13 @@
         color: var(--muted);
       }
 
-      .radios {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-      .radio {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 12px;
-        border: 1px solid var(--stroke);
-        border-radius: 999px;
-        background: #fff;
-      }
-
       .actions {
         margin-top: 8px;
         display: flex;
         gap: 12px;
         flex-wrap: wrap;
       }
+
       .btn {
         border: none;
         background: linear-gradient(
@@ -241,51 +340,63 @@
         border-radius: 12px;
         cursor: pointer;
       }
+
       .ghost {
         background: #fff;
         color: var(--brand);
         border: 1px solid #d9c9fb;
       }
-
-      footer {
-        color: var(--muted);
-        font-size: 12px;
-        margin: 24px 0 8px;
-      }
     </style>
   </head>
+
   <body>
-    <div class="wrap">
-      <header>
-        <div
-          class="mast"
-          role="navigation"
-          aria-label="グローバルナビゲーション"
-        >
-          <div class="brand">
-            <!-- ロゴがあれば差し替え可 -->
-            <!-- <img src="./data/InsightSprint_Logo.png" alt="InsightSprint"> -->
-            <span class="ttl">InsightSprint</span>
-          </div>
-          <nav class="primary">
-            <a href="./index.html">トップ</a>
-            <a href="https://www.kit-ai.co.jp/" target="_blank" rel="noopener"
-              >企業情報</a
-            >
-          </nav>
-        </div>
+    <!-- スクロール進捗バー（privacy / terms と同じパーツ） -->
+    <div
+      id="progress"
+      aria-hidden="true"
+      style="
+        position: fixed;
+        inset: 0 auto auto 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--brand), var(--accent));
+        width: 0;
+        z-index: 60;
+        box-shadow: 0 0 8px rgba(184, 147, 242, 0.6);
+      "
+    ></div>
 
-        <h1>お問い合わせ</h1>
-        <p class="lead">
-          ご依頼・ご相談・見積・パートナー連携など、下記フォームからお気軽にお知らせください。
-        </p>
-        <div class="note">
-          ご注意:
-          営業・セールス目的のご連絡には個別の回答を控える場合があります。土日祝は翌営業日以降の対応となります。
-        </div>
-      </header>
+    <!-- Header：privacy.html と同じロゴヘッダー -->
+    <header class="reveal-up">
+      <a href="index.html" style="display: inline-block">
+        <img
+          id="insight-logo"
+          src="./data/InsightSprint_Logo.png"
+          alt="InsightSprintロゴ"
+        />
+      </a>
 
-      <section class="card" aria-labelledby="form-title">
+      <a
+        href="https://www.kit-ai.co.jp"
+        target="_blank"
+        rel="noopener"
+        style="display: inline-block"
+      >
+        <img
+          id="kitai-logo"
+          src="./data/KITAI_logo_transparent.png"
+          alt="KITAIロゴ"
+        />
+      </a>
+    </header>
+
+    <!-- Main：お問い合わせフォーム -->
+    <section class="section wrap reveal-up" id="contact">
+      <h1 class="title-prefix">お問い合わせ</h1>
+      <p class="lead">
+        ご依頼・ご相談・見積・パートナー連携など、下記フォームからお気軽にお知らせください。
+      </p>
+
+      <div class="card" aria-labelledby="form-title">
         <h2
           id="form-title"
           class="visually-hidden"
@@ -293,6 +404,7 @@
         >
           お問い合わせフォーム
         </h2>
+
         <form id="contact-form" aria-describedby="form-title">
           <!-- 種別 -->
           <div class="field">
@@ -385,8 +497,15 @@
             <button class="btn ghost" type="reset">リセット</button>
           </div>
         </form>
+
+        <br />
+        <div class="lead">
+          ※
+          ご注意:営業・セールス目的のご連絡には個別の回答を控える場合があります。土日祝は翌営業日以降の対応となります。
+        </div>
+
         <script>
-          // GAS の Webアプリ URL
+          // GAS の Webアプリ URL（元の contact.html からそのまま）
           const SCRIPT_URL =
             "https://script.google.com/macros/s/AKfycbwYDoP9NxMQNeH5H662BXAp1jwxx4dwOPwE-WqwbZjLNcURUNcgUnuYpVLbPJeX8WYTIw/exec";
 
@@ -415,9 +534,49 @@
             }
           });
         </script>
-      </section>
+      </div>
+    </section>
 
-      <footer>© 2025 株式会社KITAI / InsightSprint</footer>
-    </div>
+    <!-- Footer：privacy.html / terms.html と同トーン -->
+    <footer class="wrap footer reveal-up" aria-label="フッター">
+      <div
+        class="grid"
+        style="grid-template-columns: 1fr auto; align-items: center"
+      >
+        <small>© 2025 株式会社KITAI / InsightSprint</small>
+        <div class="grid" style="grid-auto-flow: column; gap: 16px">
+          <a href="terms.html">利用規約</a>
+          <a href="privacy.html">プライバシー</a>
+          <a href="contact.html">お問い合わせ</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- reveal / progress 用スクリプト（privacy.html と同じ） -->
+    <script>
+      (function () {
+        const io = new IntersectionObserver(
+          (ents) => {
+            ents.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("is-in");
+            });
+          },
+          { threshold: 0.12 }
+        );
+        document.querySelectorAll(".reveal-up").forEach((el) => io.observe(el));
+      })();
+
+      (function () {
+        const bar = document.getElementById("progress");
+        if (!bar) return;
+        const onScroll = () => {
+          const h = document.documentElement;
+          const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+          bar.style.width = scrolled * 100 + "%";
+        };
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+      })();
+    </script>
   </body>
 </html>

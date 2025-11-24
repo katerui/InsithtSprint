@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>プライバシーポリシー｜InsightSprint（株式会社KITAI）</title>
+    <meta
+      name="description"
+      content="AIアンケート分析・B2Bマーケティングリサーチサービス「InsightSprint」のプライバシーポリシーです。個人情報の取り扱い、第三者提供、保管期間・データ削除、安全管理措置などについて定めています。"
+    />
+    <link rel="canonical" href="https://insightsprint.jp/privacy.html" />
+
+    <!-- ▼ terms.html と同じデザイン用のベースCSS -->
+    <style>
+      :root {
+        --bg: #ffffff;
+        --card: #ffffff;
+        --ink: #1f2937;
+        --muted: #6b7280;
+        --brand: #6f3faf;
+        --accent: #b893f2;
+        --stroke: #e5e7eb;
+        --shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+        --radius: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, "Noto Sans JP",
+          "Hiragino Kaku Gothic ProN", "Yu Gothic UI", sans-serif;
+        line-height: 1.7;
+      }
+
+      a {
+        color: var(--brand);
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .wrap {
+        width: min(1100px, 92vw);
+        margin-inline: auto;
+      }
+
+      .grid {
+        display: grid;
+        gap: 24px;
+      }
+
+      .card {
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 28px;
+        border: 1px solid var(--stroke);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+        margin: 0 0 14px;
+      }
+
+      h1 {
+        font-size: clamp(28px, 5vw, 40px);
+      }
+
+      h2 {
+        font-size: clamp(20px, 4vw, 26px);
+      }
+
+      h3 {
+        font-size: 18px;
+        margin: 24px 0 8px;
+        color: #374151;
+      }
+
+      p.lead {
+        font-size: clamp(15px, 2.2vw, 18px);
+        color: var(--muted);
+      }
+
+      .title-prefix::before {
+        content: "▏";
+        color: var(--brand);
+        margin-right: 8px;
+      }
+
+      /* Header（terms.html と同一トーン） */
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* 左から順に配置 */
+        padding: 24px 40px;
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: saturate(120%) blur(6px);
+      }
+
+      header img#insight-logo {
+        height: 75px;
+        width: auto;
+        filter: drop-shadow(0 8px 16px rgba(111, 63, 175, 0.18));
+      }
+
+      header img#kitai-logo {
+        height: 55px;
+        width: auto;
+        margin-left: 16px;
+        filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
+      }
+
+      /* tagline 用フォント（terms.html と揃え） */
+      @font-face {
+        font-family: "KaisotaiNextUPB";
+        src: url("./fonts/Kaisotai-Next-UP-B.ttf") format("truetype"),
+          url("./fonts/Kaisotai-Next-UP-B.otf") format("opentype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      .tagline {
+        font-family: "KaisotaiNextUPB", "Yu Gothic UI", "Yu Gothic",
+          "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP",
+          "Noto Sans JP", "Meiryo", sans-serif;
+        font-weight: 700;
+      }
+
+      .reveal-up {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .reveal-up.is-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      /* 画面外のレイアウト/描画を遅延（terms と合わせる） */
+      header,
+      section,
+      footer {
+        content-visibility: auto;
+        contain-intrinsic-size: 800px;
+      }
+
+      @media (max-width: 900px) {
+        header,
+        section,
+        footer {
+          contain-intrinsic-size: 1000px 900px;
+        }
+
+        header {
+          padding-inline: 20px;
+        }
+
+        header img#insight-logo {
+          height: 72px;
+        }
+
+        header img#kitai-logo {
+          height: 40px;
+        }
+      }
+
+      /* 本文内で少し読みやすくする（terms と統一） */
+      .terms-card p,
+      .terms-card li {
+        font-size: 15px;
+      }
+
+      .terms-card ul {
+        padding-left: 1.4em;
+      }
+
+      .article-title {
+        margin-top: 30px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      /* フッター（terms に合わせる） */
+      footer {
+        padding: 40px 0;
+        color: #6b7280;
+        border-top: 1px solid var(--stroke);
+      }
+
+      footer a {
+        font-size: 14px;
+      }
+
+      /* KITAIロゴを右端へ押し出す */
+      header a:last-child {
+        margin-left: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- スクロール進捗バー（terms と同じパーツ） -->
+    <div
+      id="progress"
+      aria-hidden="true"
+      style="
+        position: fixed;
+        inset: 0 auto auto 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--brand), var(--accent));
+        width: 0;
+        z-index: 60;
+        box-shadow: 0 0 8px rgba(184, 147, 242, 0.6);
+      "
+    ></div>
+
+    <!-- Header：ロゴは terms/index.html と同じ -->
+    <header class="reveal-up">
+      <a href="index.html" style="display: inline-block">
+        <img
+          id="insight-logo"
+          src="./data/InsightSprint_Logo.png"
+          alt="InsightSprintロゴ"
+        />
+      </a>
+
+      <a
+        href="https://www.kit-ai.co.jp"
+        target="_blank"
+        rel="noopener"
+        style="display: inline-block"
+      >
+        <img
+          id="kitai-logo"
+          src="./data/KITAI_logo_transparent.png"
+          alt="KITAIロゴ"
+        />
+      </a>
+    </header>
+
+    <!-- Main：プライバシーポリシー -->
+    <section class="section wrap reveal-up" id="privacy">
+      <h1 class="title-prefix">プライバシーポリシー</h1>
+
+      <div class="card terms-card" style="margin-top: 26px">
+        <p>
+          株式会社KITAI（以下「当社」といいます）は、当社が提供する
+          「InsightSprint」（以下「本サービス」といいます）における
+          個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」といいます）を定めます。
+        </p>
+
+        <h2 class="article-title">第1条（適用範囲）</h2>
+        <p>
+          本ポリシーは、当社が本サービスおよび関連するウェブサイト （<a
+            href="https://insightsprint.jp/"
+            target="_blank"
+            rel="noopener"
+            >https://insightsprint.jp/</a
+          >
+          を含む）において
+          取得・利用・管理する個人情報等の取扱いに適用されます。
+        </p>
+
+        <h2 class="article-title">第2条（取得する情報の種類）</h2>
+        <p>
+          当社は、本サービスの提供にあたり、主に以下の情報を取得する場合があります。
+        </p>
+
+        <h3>1. お問い合わせ・申込み時に取得する情報</h3>
+        <ul>
+          <li>氏名・会社名・部署名・役職</li>
+          <li>メールアドレス・電話番号</li>
+          <li>請求先情報（住所・部署名・担当者名 等）</li>
+          <li>その他フォームに利用者が任意に記入した情報</li>
+        </ul>
+
+        <h3>2. アンケート調査・分析対象データに含まれる情報</h3>
+        <ul>
+          <li>アンケート回答データ（選択式回答・自由回答を含む）</li>
+          <li>属性情報（年代・性別・職種・業種・エリア 等）</li>
+          <li>その他、利用者が当社に提供する調査用データ一式</li>
+        </ul>
+        <p>
+          ※原則として、個人が特定されるような氏名・住所・電話番号などの情報を含む形での提供はお控えください。
+          やむを得ず含まれる場合は、あらかじめ利用者の責任においてマスキング等の処理を行ってください。
+        </p>
+
+        <h3>3. アクセス時に自動的に取得される情報</h3>
+        <ul>
+          <li>IPアドレス・ブラウザ情報</li>
+          <li>アクセス日時・アクセス元URL・閲覧ページ</li>
+          <li>Cookie等の識別子（利用する場合）</li>
+        </ul>
+
+        <h2 class="article-title">第3条（情報の利用目的）</h2>
+        <p>当社は、取得した情報を以下の目的で利用します。</p>
+        <ul>
+          <li>
+            本サービスの提供（アンケートデータの集計・分析・レポート作成等）のため
+          </li>
+          <li>
+            利用者との連絡・問い合わせへの対応・契約手続き・請求・支払処理のため
+          </li>
+          <li>本サービスの品質向上・機能改善・不具合対応のため</li>
+          <li>新機能・新サービス・キャンペーン等に関するご案内のため</li>
+          <li>
+            本サービスの利用状況の把握・統計資料作成のため（個人が特定されない形に限る）
+          </li>
+          <li>法令・ガイドライン等に基づく対応・紛争対応のため</li>
+        </ul>
+
+        <h2 class="article-title">第4条（モデル改善へのデータ利用について）</h2>
+        <p>
+          当社は、本サービスにおいて、利用者が提供したアンケートデータや個人情報を
+          当社または第三者が提供する生成AIモデルの学習・モデル改善のために利用しません。
+        </p>
+        <p>
+          生成AIによる処理は、あくまで「個々の案件におけるレポート生成」のために限って行われ、
+          モデル改善目的で永続的に保存・再利用されることはありません。
+        </p>
+
+        <h2 class="article-title">第5条（第三者提供）</h2>
+        <p>当社は、次の場合を除き、取得した個人情報を第三者に提供しません。</p>
+        <ul>
+          <li>本人の同意がある場合</li>
+          <li>法令に基づく場合</li>
+          <li>
+            人の生命・身体または財産の保護のために必要であり、本人の同意を得ることが困難な場合
+          </li>
+          <li>
+            公衆衛生の向上または児童の健全な育成推進のために特に必要がある場合で、
+            本人の同意を得ることが困難な場合
+          </li>
+          <li>
+            国の機関もしくは地方公共団体またはその委託を受けた者が
+            法令の定める事務を遂行することに対して協力する必要がある場合で、
+            本人の同意取得が当該事務の遂行に支障を及ぼすおそれがあるとき
+          </li>
+        </ul>
+
+        <h2 class="article-title">第6条（業務委託・クラウドサービスの利用）</h2>
+        <p>
+          当社は、本サービスの提供に必要な範囲で、システム運用・データ保管・決済処理などを
+          外部事業者に委託することがあります。この場合、当社は、委託先に対し適切な契約を締結し、
+          個人情報の安全管理が図られるよう監督します。
+        </p>
+        <p>
+          また、当社が利用するクラウドサービスの提供事業者のサーバ拠点に応じて、
+          利用者から預かったデータが国外に設置されたサーバに保存される場合があります。
+          この場合も、日本の個人情報保護法その他関係法令に従い、適切な保護措置を講じます。
+        </p>
+
+        <h2 class="article-title">第7条（共同利用）</h2>
+        <p>
+          現時点では、当社は本サービスにおいて取得した個人データの共同利用は行っていません。
+          将来共同利用を行う場合には、その範囲・項目・利用目的・管理責任者等を
+          当社ウェブサイト上で明示します。
+        </p>
+
+        <h2 class="article-title">第8条（保管期間・データ削除）</h2>
+        <p>
+          1.
+          当社は、業務上必要な期間および法令に基づく保存義務の範囲内で個人情報を保管します。
+        </p>
+        <p>
+          2.
+          アンケートデータ等、本サービスの提供に伴い預かったデータは、原則として以下の方針で取り扱います。
+        </p>
+        <ul>
+          <li>レポート納品後、最大でも 90日以内 に削除します。</li>
+          <li>
+            利用者から個別に削除依頼があった場合は、可能な範囲で速やかに削除し、
+            特別の事情がない限り 90日以内 を目安に対応します。
+          </li>
+        </ul>
+        <p>
+          3.
+          利用者の希望に応じて、当社は、一定範囲内で「データ削除証明書」を発行することがあります。<br />
+          ※削除証明書の発行には、別途手数料や事務処理期間を要する場合があります。
+        </p>
+
+        <h2 class="article-title">第9条（安全管理措置）</h2>
+        <p>
+          当社は、個人情報の漏えい・滅失・毀損等を防止するため、以下のような安全管理措置を講じます（例示）。
+        </p>
+        <ul>
+          <li>アクセス権限の限定・ログ管理</li>
+          <li>パスワード・認証情報の適切な管理</li>
+          <li>暗号化通信（HTTPS）の利用</li>
+          <li>社内規程の整備および従業者への教育</li>
+          <li>委託先に対する契約上・技術上の安全管理措置の要請</li>
+        </ul>
+
+        <h2 class="article-title">
+          第10条（AI・アルゴリズム利用に伴う留意点）
+        </h2>
+        <p>
+          当社は、アンケートデータの集計・分析・レポート作成にあたり、生成AIや統計アルゴリズム等を利用します。
+        </p>
+        <ul>
+          <li>
+            AIの特性上、出力結果に誤り・偏り・不完全な説明が含まれる可能性があります。
+          </li>
+          <li>
+            当社は、AIの出力が常に事実・真実・唯一の正解であることを保証するものではありません。
+            成果物の最終的なご利用にあたっては、利用者ご自身の責任で妥当性をご確認ください。
+          </li>
+          <li>
+            前条にかかわらず、当社は、故意または重過失による場合を除き、
+            AI出力に起因して利用者に生じた損害について責任を負いません。
+          </li>
+        </ul>
+
+        <h2 class="article-title">第11条（クッキー等の利用について）</h2>
+        <p>
+          当社ウェブサイトでは、ユーザーの利便性向上やアクセス状況の把握のため、
+          クッキーその他の類似技術を利用する場合があります。
+        </p>
+        <ul>
+          <li>
+            クッキーには氏名・メールアドレスなどの「直接の個人情報」は含まれません。
+          </li>
+          <li>
+            ブラウザ設定により、クッキーを無効にすることができますが、その場合、一部機能が利用できないことがあります。
+          </li>
+          <li>
+            将来的に特定のアクセス解析ツール等を利用する場合には、その名称・提供者・取得情報・利用目的等を
+            当社ウェブサイト上で別途明示します。
+          </li>
+        </ul>
+
+        <h2 class="article-title">第12条（開示等の請求・お問い合わせ）</h2>
+        <p>
+          利用者は、当社が保有する自己の個人情報について、個人情報保護法の定めに基づき、
+          以下の請求を行うことができます。
+        </p>
+        <ul>
+          <li>利用目的の通知</li>
+          <li>開示（第三者提供記録を含む場合があります）</li>
+          <li>訂正・追加・削除</li>
+          <li>利用停止・第三者提供の停止</li>
+        </ul>
+        <p>
+          これらの請求を希望される場合、または本ポリシーに関するご質問は、
+          当社ウェブサイトの「お問い合わせ」ページよりご連絡ください。<br />
+          （お問い合わせURL例： <a href="contact.html">contact.html</a> ）
+        </p>
+
+        <h2 class="article-title">第13条（プライバシーポリシーの変更）</h2>
+        <p>
+          当社は、法令の改正や本サービス内容の変更等に応じて、本ポリシーを改定することがあります。
+          重要な変更を行う場合には、当社ウェブサイト上での掲示その他適切な方法により告知します。
+        </p>
+        <p>
+          改定後のプライバシーポリシーは、当社ウェブサイトに掲載した時点から適用されるものとします。
+        </p>
+
+        <h2 class="article-title">第14条（事業者情報）</h2>
+        <p>
+          本サービスにおける個人情報の取扱いに関する事業者は、以下のとおりです。
+        </p>
+        <p>
+          株式会社KITAI<br />
+          代表取締役　高橋 憲二<br />
+          〒150-0043　東京都渋谷区道玄坂1丁目10番8号　渋谷道玄坂東急ビル2F−C
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer（terms.html と同トーン） -->
+    <footer class="wrap footer reveal-up" aria-label="フッター">
+      <div
+        class="grid"
+        style="grid-template-columns: 1fr auto; align-items: center"
+      >
+        <small>© 2025 株式会社KITAI / InsightSprint</small>
+        <div class="grid" style="grid-auto-flow: column; gap: 16px">
+          <a href="terms.html">利用規約</a>
+          <a href="privacy.html">プライバシー</a>
+          <a href="contact.html">お問い合わせ</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- reveal / progress 用の軽量スクリプト（terms.html 簡易版） -->
+    <script>
+      (function () {
+        const io = new IntersectionObserver(
+          (ents) => {
+            ents.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("is-in");
+            });
+          },
+          { threshold: 0.12 }
+        );
+        document.querySelectorAll(".reveal-up").forEach((el) => io.observe(el));
+      })();
+
+      (function () {
+        const bar = document.getElementById("progress");
+        if (!bar) return;
+        const onScroll = () => {
+          const h = document.documentElement;
+          const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+          bar.style.width = scrolled * 100 + "%";
+        };
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+      })();
+    </script>
+  </body>
+</html>

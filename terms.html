@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>利用規約｜InsightSprint（株式会社KITAI）</title>
+    <meta
+      name="description"
+      content="AIアンケート分析・B2Bマーケティングリサーチサービス「InsightSprint」をご利用いただく際の利用規約です。サービスの範囲、免責、データの取扱い、補償等について定めています。"
+    />
+    <link rel="canonical" href="https://insightsprint.jp/terms.html" />
+
+    <!-- ▼ index.html と同じデザイン用のベースCSS（必要部分のみ抜粋） -->
+    <style>
+      :root {
+        --bg: #ffffff;
+        --card: #ffffff;
+        --ink: #1f2937;
+        --muted: #6b7280;
+        --brand: #6f3faf;
+        --accent: #b893f2;
+        --stroke: #e5e7eb;
+        --shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+        --radius: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, "Noto Sans JP",
+          "Hiragino Kaku Gothic ProN", "Yu Gothic UI", sans-serif;
+        line-height: 1.7;
+      }
+
+      a {
+        color: var(--brand);
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .wrap {
+        width: min(1100px, 92vw);
+        margin-inline: auto;
+      }
+
+      .grid {
+        display: grid;
+        gap: 24px;
+      }
+
+      .card {
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 28px;
+        border: 1px solid var(--stroke);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+        margin: 0 0 14px;
+      }
+
+      h1 {
+        font-size: clamp(28px, 5vw, 40px);
+      }
+
+      h2 {
+        font-size: clamp(20px, 4vw, 26px);
+      }
+
+      h3 {
+        font-size: 18px;
+        margin: 24px 0 8px;
+        color: #374151;
+      }
+
+      p.lead {
+        font-size: clamp(15px, 2.2vw, 18px);
+        color: var(--muted);
+      }
+
+      .title-prefix::before {
+        content: "▏";
+        color: var(--brand);
+        margin-right: 8px;
+      }
+
+      /* Header（index.html と同一トーン） */
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* 左から順に配置 */
+        padding: 24px 40px; /* 上右下左 = 24px 40px 24px 40px */
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: saturate(120%) blur(6px);
+      }
+
+      header img#insight-logo {
+        height: 75px;
+        width: auto;
+        filter: drop-shadow(0 8px 16px rgba(111, 63, 175, 0.18));
+      }
+
+      /* tagline 用フォント（index.html と揃え） */
+      @font-face {
+        font-family: "KaisotaiNextUPB";
+        src: url("./fonts/Kaisotai-Next-UP-B.ttf") format("truetype"),
+          url("./fonts/Kaisotai-Next-UP-B.otf") format("opentype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      .tagline {
+        font-family: "KaisotaiNextUPB", "Yu Gothic UI", "Yu Gothic",
+          "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP",
+          "Noto Sans JP", "Meiryo", sans-serif;
+        font-weight: 700;
+      }
+
+      .reveal-up {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .reveal-up.is-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      /* 画面外のレイアウト/描画を遅延（index と合わせる） */
+      header,
+      section,
+      footer {
+        content-visibility: auto;
+        contain-intrinsic-size: 800px;
+      }
+
+      @media (max-width: 900px) {
+        header,
+        section,
+        footer {
+          contain-intrinsic-size: 1000px 900px;
+        }
+
+        header {
+          padding-inline: 20px;
+        }
+
+        header img#insight-logo {
+          height: 72px;
+        }
+
+        header img#kitai-logo {
+          height: 40px;
+        }
+      }
+
+      /* Term 本文内で少し読みやすくする */
+      .terms-card p,
+      .terms-card li {
+        font-size: 15px;
+      }
+
+      .terms-card ul {
+        padding-left: 1.4em;
+      }
+
+      .article-title {
+        margin-top: 30px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      /* フッター（index に合わせる） */
+      footer {
+        padding: 40px 0;
+        color: #6b7280;
+        border-top: 1px solid var(--stroke);
+      }
+
+      footer a {
+        font-size: 14px;
+      }
+
+      header img#kitai-logo {
+        height: 55px;
+        width: auto;
+        margin-left: 16px;
+        filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
+      }
+
+      /* KITAIロゴを右端へ押し出す */
+      header a:last-child {
+        margin-left: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- スクロール進捗バー（index と同じパーツ） -->
+    <div
+      id="progress"
+      aria-hidden="true"
+      style="
+        position: fixed;
+        inset: 0 auto auto 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--brand), var(--accent));
+        width: 0;
+        z-index: 60;
+        box-shadow: 0 0 8px rgba(184, 147, 242, 0.6);
+      "
+    ></div>
+
+    <!-- Header：ロゴは index.html と同じパス -->
+    <header class="reveal-up">
+      <a href="index.html" style="display: inline-block">
+        <img
+          id="insight-logo"
+          src="./data/InsightSprint_Logo.png"
+          alt="InsightSprintロゴ"
+        />
+      </a>
+
+      <a
+        href="https://www.kit-ai.co.jp"
+        target="_blank"
+        rel="noopener"
+        style="display: inline-block"
+      >
+        <img
+          id="kitai-logo"
+          src="./data/KITAI_logo_transparent.png"
+          alt="KITAIロゴ"
+        />
+      </a>
+    </header>
+
+    <!-- Main：利用規約 -->
+    <section class="section wrap reveal-up" id="terms">
+      <h1 class="title-prefix">InsightSprint 利用規約</h1>
+      <p class="lead">
+        本利用規約（以下「本規約」といいます。）は、株式会社KITAI（以下「当社」といいます。）が提供する
+        「InsightSprint」（以下「本サービス」といいます。）の利用条件を定めるものです。<br />
+        本サービスの利用者（以下「利用者」といいます。）は、本規約に同意の上、本サービスをご利用ください。
+      </p>
+
+      <div class="card terms-card" style="margin-top: 26px">
+        <h2 class="article-title">第1条（本規約の適用）</h2>
+        <p>
+          1.
+          本規約は、本サービスの利用に関する当社と利用者との一切の関係に適用されます。<br />
+          2.
+          当社が本サービスに関してウェブサイト上で随時掲載する説明、ガイドライン、注意書き等は、本規約の一部を構成します。<br />
+          3.
+          本規約の内容と、個別契約・見積書・発注書その他書面により別途定めた条件が異なる場合は、当該書面の定めが優先して適用されます。
+        </p>
+
+        <h2 class="article-title">第2条（定義）</h2>
+        <p>本規約において使用する各用語の定義は、次のとおりとします。</p>
+        <ul>
+          <li>
+            「本サービス」：当社が提供する、アンケートローデータを用いたAIによる集計・分析・レポート作成サービス
+            「InsightSprint」およびこれに付随する一切のサービス
+          </li>
+          <li>
+            「利用者」：本サービスの提供を受ける法人・団体・個人事業主その他の契約主体
+          </li>
+          <li>
+            「アンケートデータ」：利用者が当社に提供するアンケート調査の生データ、集計データ、設問票等の一切のデータ
+          </li>
+          <li>
+            「成果物」：本サービスの提供に基づき当社が利用者に納品するレポート、グラフ集、作成用ファイルその他のアウトプット
+          </li>
+        </ul>
+
+        <h2 class="article-title">第3条（利用契約の成立）</h2>
+        <p>
+          1.
+          利用者が当社所定の方法により申込みを行い、当社がこれを承諾した時点で、本サービスに関する利用契約（以下「本契約」といいます。）が成立します。<br />
+          2.
+          当社は、以下のいずれかに該当すると判断した場合、申込みを承諾しないことがあります。
+        </p>
+        <ul>
+          <li>申込み内容に虚偽または重大な誤記がある場合</li>
+          <li>
+            過去に本規約違反等により利用停止等の措置を受けたことがある場合
+          </li>
+          <li>
+            反社会的勢力に該当し、またはそのおそれがあると当社が判断した場合
+          </li>
+          <li>その他、当社が本サービスの提供が不適切と合理的に判断した場合</li>
+        </ul>
+
+        <h2 class="article-title">
+          第4条（本サービスの内容・大規模データ等の特則）
+        </h2>
+        <p>
+          1.
+          本サービスは、利用者から提供されたアンケートデータを用いて、生成AIその他の手段により集計・分析・レポート作成等を行い、その成果物を納品するものです。<br />
+          2.
+          本サービスの具体的な内容（納品物の種類・形式・ボリューム、納期、料金等）は、当社が提示するプラン内容または個別の見積書・発注書等により定まります。
+        </p>
+        <p><strong>【大規模データ・特殊設計時の特別条項】</strong></p>
+        <p>
+          3.
+          サンプル数が極端に多い場合、設問構造が複雑な場合、あるいは特定の統計的手法や特殊な設計・集計が必要な場合（以下「大規模データ等」といいます。）には、以下の特則が適用されます。
+        </p>
+        <ul>
+          <li>
+            当社は、通常の標準プランとは異なる納期・料金・作業範囲を提示することができます。
+          </li>
+          <li>
+            大規模データ等であるか否か、追加料金・追加納期の要否は、利用者からの事前情報・データ受領時の確認に基づき、当社が合理的範囲で判断します。
+          </li>
+          <li>
+            利用者が事前説明なく大規模データ等を提供した結果、当社の作業負荷が著しく増大すると見込まれる場合、当社は作業着手後であっても、
+            追加料金の協議・納期変更・作業範囲の調整を利用者に申し入れることができます。
+          </li>
+          <li>
+            利用者が当社の提示する追加条件に同意しない場合、当社は本サービスの提供を中止・終了できるものとし、その場合に利用者に生じた損害について、当社は故意または重過失がある場合を除き責任を負いません。
+          </li>
+        </ul>
+
+        <h2 class="article-title">
+          第5条（データの取扱い・モデル改善への不利用）
+        </h2>
+        <p>
+          1.
+          利用者は、当社にアンケートデータ等を提供するにあたり、法令および社内規程等を遵守し、必要な権限・同意を取得した上で提供するものとします。<br />
+          2.
+          当社は、本サービスの提供に必要な範囲においてのみ、アンケートデータ等を利用します。
+        </p>
+        <p><strong>【モデル改善へのデータ利用について】</strong></p>
+        <p>
+          3.
+          当社は、利用者が提供したアンケートデータおよび個人情報を、当社または第三者が提供する
+          生成AIモデルの学習・モデル改善の目的で利用しません。<br />
+          4.
+          生成AIへの入力は、本サービスにおける個別案件の集計・分析・レポート生成のために限って行い、
+          モデル改善目的で永続的に再利用されることはありません。
+        </p>
+        <p><strong>【データ保存期間と削除】</strong></p>
+        <p>
+          5.
+          当社は、アンケートデータ等を、原則としてレポート納品後から<strong>90日以内</strong>に削除します（法令に別段の定めがある場合を除きます）。<br />
+          6.
+          利用者からデータ削除の要請があった場合、当社は可能な範囲で速やかに対応し、特別の事情がない限り
+          90日以内を目安として削除します。
+        </p>
+        <p><strong>【削除証明書の発行】</strong></p>
+        <p>
+          7.
+          利用者の希望に応じて、当社は削除対象の範囲を明確にした上で、アンケートデータ等の削除が完了したことを示す
+          「削除証明書」を発行することがあります。削除証明書の発行には、別途手数料や事務処理期間を要する場合があります。<br />
+          8.
+          削除証明書は、当社が合理的な範囲で実施した削除作業について確認するものであり、バックアップ領域等の技術的に即時削除が困難な領域を含め、あらゆる媒体からの完全抹消を絶対的に保証するものではありません。
+        </p>
+
+        <h2 class="article-title">第6条（知的財産権等）</h2>
+        <p>
+          1.
+          本サービスおよび当社ウェブサイトに関するプログラム、システム、ノウハウ、デザイン等に関する知的財産権は、当社または正当な権利者に帰属します。<br />
+          2.
+          本サービスの提供により利用者に納品される成果物のうち、レイアウト、テンプレート、分析ロジック等、汎用的な部分に関する知的財産権は当社に帰属します。<br />
+          3.
+          利用者は、成果物を本サービスの利用目的の範囲内で、社内共有・クライアントへの提案等のために利用することができます。
+          それ以外の目的での複製・公衆送信・再配布等を行う場合には、当社の事前の書面または電子的な承諾を要します。
+        </p>
+
+        <h2 class="article-title">第7条（禁止事項）</h2>
+        <p>
+          利用者は、本サービスの利用にあたり、以下の行為を行ってはなりません。
+        </p>
+        <ul>
+          <li>法令または公序良俗に違反する行為</li>
+          <li>
+            当社または第三者の知的財産権、プライバシー、名誉その他の権利・利益を侵害する行為
+          </li>
+          <li>
+            本サービスを逆コンパイル、リバースエンジニアリング、解析等する行為
+          </li>
+          <li>
+            本サービスを、本来のリサーチ・分析目的以外で再販売・再提供等する行為
+          </li>
+          <li>反社会的勢力への利用・再提供、または反社会的勢力を利する行為</li>
+          <li>その他、当社が不適切と合理的に判断する行為</li>
+        </ul>
+
+        <h2 class="article-title">第8条（料金・支払条件）</h2>
+        <p>
+          1.
+          利用者は、当社が提示する料金プランまたは個別見積に従い、本サービスの対価を支払うものとします。<br />
+          2.
+          支払方法・支払期日その他の条件は、見積書・発注書・請求書等に定めるとおりとします。<br />
+          3.
+          利用者の都合によるキャンセル・仕様変更等があった場合の費用精算については、別途協議の上決定します。
+        </p>
+
+        <h2 class="article-title">第9条（成果物の取扱い）</h2>
+        <p>
+          1.
+          当社は、合意された納期までに成果物を納品するよう合理的努力を払いますが、不可抗力等により遅延が生じた場合、当社は故意または重過失がある場合を除き責任を負いません。<br />
+          2.
+          成果物の内容につき疑義がある場合、利用者は納品後一定期間内（個別に合意する期間）に当社に通知するものとし、当社は合理的範囲で修正対応に努めます。
+        </p>
+
+        <h2 class="article-title">第10条（本サービスの変更・中断・終了）</h2>
+        <p>
+          1.
+          当社は、システム保守、セキュリティ対応、提供内容の見直し等のため、事前告知の上で本サービスの内容を変更し、または一時的に中断・停止することがあります。<br />
+          2.
+          緊急のシステム障害・外部サービスの停止・災害・法令改正等、やむを得ない事由がある場合には、事前告知なく本サービスを中断・停止することがあります。<br />
+          3.
+          当社は、本サービスの終了・大幅な変更等を行う場合、合理的な期間をもって利用者に事前告知するよう努めます。
+        </p>
+
+        <h2 class="article-title">第11条（免責・AI誤判定リスク）</h2>
+        <p>
+          1.
+          本サービスでは、生成AIおよび各種アルゴリズムを用いて集計・分析・レポート作成を行いますが、
+          AIの特性上、出力内容には誤り、不完全な説明、統計的な偏り等が含まれる可能性があります。<br />
+          2.
+          当社は、成果物における記載内容が常に完全かつ正確であること、また特定の目的への適合性を保証するものではありません。
+        </p>
+        <p><strong>【AI誤判定に関する明確な免責】</strong></p>
+        <p>
+          3.
+          利用者は、成果物を自らの責任において検証・判断の上で利用するものとし、当社は、
+          以下のようなAI特有の誤判定・限界に起因して利用者または第三者に生じた損害について、当社に故意または重過失がある場合を除き、一切の責任を負いません。
+        </p>
+        <ul>
+          <li>
+            自由回答の自動クラスタリング・要約・ラベリングにおける誤り・解釈の揺れ
+          </li>
+          <li>サンプル構成上の偏りに起因する集計結果のブレ・解釈の困難性</li>
+          <li>外部環境の変化等により、レポート作成時点と実態が乖離すること</li>
+          <li>その他、AI出力の限界に起因する分析上の過不足や誤認</li>
+        </ul>
+        <p>
+          4.
+          当社が責任を負う場合であっても、その責任範囲は、当該損害の直接かつ通常の範囲に限られ、
+          かつ当社が当該損害発生月に受領した本サービス利用料金の総額を上限とします。
+          ただし、当社に故意または重過失がある場合はこの限りではありません。
+        </p>
+        <p>
+          5.
+          利用者の指示・前提条件・提供データの内容に起因する誤りや不備については、当社は責任を負いません。
+        </p>
+
+        <h2 class="article-title">
+          第12条（第三者からの請求および利用者の補償義務）
+        </h2>
+        <p>
+          1.
+          利用者が提供したアンケートデータその他の情報、または利用者による成果物の利用に関連して、
+          第三者から当社に対して請求・クレーム・異議申立て・訴訟提起（以下「第三者請求」と総称します。）がなされた場合、利用者は自己の費用と責任においてこれを解決するものとします。<br />
+          2.
+          利用者は、第三者請求に関連して当社に損害（弁護士費用、調査費用、和解金その他合理的費用を含む。）が生じた場合、当社に対しその一切を補償し、免責するものとします。
+        </p>
+        <p><strong>【第三者訴訟が発生した場合の補償義務の強化】</strong></p>
+        <p>
+          3.
+          とくに、アンケートデータに関する権利処理（個人情報保護法上の同意取得、著作権・肖像権等の処理を含む）が不十分であったことに起因して第三者訴訟が提起された場合は、利用者は、当該訴訟に関して当社が被った一切の損害・費用を補償する義務を負うものとします。<br />
+          4.
+          当社に故意または重過失がある場合を除き、当社は、利用者と第三者との間で生じた紛争について責任を負いません。
+        </p>
+
+        <h2 class="article-title">第13条（秘密保持）</h2>
+        <p>
+          1.
+          当社および利用者は、本契約に関連して相手方から開示された技術上・営業上その他一切の非公開情報（アンケートデータ・成果物の内容を含む。）を、相手方の事前の書面または電子的承諾なく第三者に開示・漏えいしてはなりません。<br />
+          2. 次の各号に該当する情報は秘密情報から除外されます。
+        </p>
+        <ul>
+          <li>相手方から開示された時点で既に公知であった情報</li>
+          <li>相手方から開示された後、自己の責によらず公知となった情報</li>
+          <li>正当な権限を有する第三者から適法に取得した情報</li>
+          <li>相手方の秘密情報によらず独自に開発・取得した情報</li>
+        </ul>
+
+        <h2 class="article-title">第14条（個人情報の取扱い）</h2>
+        <p>
+          1. 当社は、本サービスに関連して取得する個人情報を、別途定める
+          「プライバシーポリシー」に従い、適切に取り扱います。<br />
+          2.
+          利用者は、アンケートデータに個人情報が含まれる場合、本人同意の取得、目的外利用の禁止、第三者提供に関する法令遵守等、個人情報保護法その他関連法令上の必要な措置を自らの責任で講じるものとします。
+        </p>
+
+        <h2 class="article-title">第15条（反社会的勢力の排除）</h2>
+        <p>
+          1.
+          当社および利用者は、自らが暴力団その他の反社会的勢力に該当せず、また将来にわたっても該当しないことを表明・保証します。<br />
+          2.
+          相手方が反社会的勢力に該当することが判明した場合、相手方に何らの催告を要することなく、本契約を直ちに解除できるものとします。
+        </p>
+
+        <h2 class="article-title">第16条（契約期間・解除）</h2>
+        <p>
+          1.
+          本契約の有効期間は、個別に合意された期間、または当該案件に関する成果物の納品・精算が完了するまでの期間とします。<br />
+          2.
+          当社または利用者は、相手方が本規約に違反し、相当期間を定めた是正催告にもかかわらず是正されない場合、本契約を解除することができます。
+        </p>
+
+        <h2 class="article-title">第17条（権利義務の譲渡禁止）</h2>
+        <p>
+          利用者は、当社の事前の書面による承諾なく、本契約上の地位または本契約に基づく権利義務の全部または一部を第三者に譲渡し、もしくは担保に供してはなりません。
+        </p>
+
+        <h2 class="article-title">第18条（準拠法・合意管轄）</h2>
+        <p>
+          1. 本規約および本契約の準拠法は、日本法とします。<br />
+          2. 本規約または本契約に関連して当社と利用者との間に紛争が生じた場合、
+          当社本店所在地を管轄する裁判所を第一審の専属的合意管轄裁判所とします。
+        </p>
+
+        <h2 class="article-title">第19条（協議事項）</h2>
+        <p>
+          本規約に定めのない事項または本規約の解釈について疑義が生じた場合、当社および利用者は、誠意をもって協議し、円満に解決を図るものとします。
+        </p>
+
+        <h2 class="article-title">事業者情報</h2>
+        <p>
+          株式会社KITAI<br />
+          代表取締役　高橋 憲二<br />
+          〒150-0043　東京都渋谷区道玄坂1丁目10番8号　渋谷道玄坂東急ビル2F−C
+        </p>
+        <p class="muted" style="font-size: 13px">
+          制定日：2025年&nbsp;月&nbsp;日（※必要に応じて日付をご調整ください）
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer（index.html と同トーン） -->
+    <footer class="wrap footer reveal-up" aria-label="フッター">
+      <div
+        class="grid"
+        style="grid-template-columns: 1fr auto; align-items: center"
+      >
+        <small>© 2025 株式会社KITAI / InsightSprint</small>
+        <div class="grid" style="grid-auto-flow: column; gap: 16px">
+          <a href="terms.html">利用規約</a>
+          <a href="privacy.html">プライバシー</a>
+          <a href="contact.html">お問い合わせ</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- reveal / progress 用の軽量スクリプト（index.html 簡易版） -->
+    <script>
+      (function () {
+        const io = new IntersectionObserver(
+          (ents) => {
+            ents.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("is-in");
+            });
+          },
+          { threshold: 0.12 }
+        );
+        document.querySelectorAll(".reveal-up").forEach((el) => io.observe(el));
+      })();
+
+      (function () {
+        const bar = document.getElementById("progress");
+        if (!bar) return;
+        const onScroll = () => {
+          const h = document.documentElement;
+          const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+          bar.style.width = scrolled * 100 + "%";
+        };
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+      })();
+    </script>
+  </body>
+</html>
