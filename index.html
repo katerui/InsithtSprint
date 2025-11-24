@@ -1690,12 +1690,17 @@
       </div>
 
       <script>
-        (function () {
+        document.addEventListener("DOMContentLoaded", function () {
           const section = document.getElementById("sample-report");
+          if (!section) return;
+
           const thumbs = Array.from(
             section.querySelectorAll(".thumb-grid .thumb-item")
           );
-          const overlay = section.querySelector("#lb");
+
+          const overlay = document.getElementById("lb");
+          if (!overlay) return;
+
           const figure = overlay.querySelector(".lb-figure");
           const imgEl = overlay.querySelector(".lb-img");
           const capEl = overlay.querySelector("#lb-caption");
@@ -1714,6 +1719,7 @@
             document.body.style.top = `-${scrollY}px`;
             document.body.style.width = "100%";
           }
+
           function unlockScroll() {
             document.body.style.position = "";
             document.body.style.top = "";
@@ -1785,6 +1791,7 @@
             }
             openAt(idx + 1);
           }
+
           function showPrev(e) {
             if (e) {
               e.preventDefault();
@@ -1847,7 +1854,7 @@
             },
             { passive: true }
           );
-        })();
+        });
       </script>
     </section>
     <!-- ▲▲▲▲▲▲ サンプルレポート 終わり ▲▲▲▲▲▲ -->
@@ -5196,5 +5203,23 @@
         </figure>
       </div>
     </div>
+    <style>
+      /* ライトボックスのボタンを強制的に最前面に表示する修正 */
+      .lb-figure .lb-nav,
+      .lb-figure .lb-close,
+      .lb-figure .lb-btn {
+        z-index: 2147483647 !important; /* 可能な限り大きな値で最前面へ */
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important; /* タップ操作を確実に有効化 */
+        overflow: visible !important; /* 切り取りを防止 */
+      }
+
+      /* コンテナ自体のはみ出し表示を許可 */
+      .lb-figure {
+        overflow: visible !important;
+        transform: translateZ(0); /* モバイルでの描画バグ防止（おまじない） */
+      }
+    </style>
   </body>
 </html>
