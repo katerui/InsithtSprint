@@ -1,0 +1,459 @@
+/**
+ * 調査結果HTMLレポート スタイルシート
+ * 生成日: 2025-11-02
+ * カラーテーマ: 青系グラデーション
+ */
+
+/* ===== カラーテーマ（青系グラデーション） ===== */
+:root {
+    /* 青系グラデーション（5段階） */
+    --blue-900: #1e3a8a;  /* 最も濃い */
+    --blue-700: #1d4ed8;
+    --blue-500: #3b82f6;  /* メイン */
+    --blue-300: #93c5fd;
+    --blue-100: #dbeafe;  /* 最も薄い */
+    --blue-50: #eff6ff;
+
+    /* テキストカラー */
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --text-white: #ffffff;
+
+    /* 背景カラー */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9fafb;
+    --bg-accent: #eff6ff;
+    --bg-dark: #111827;
+
+    /* ボーダー */
+    --border-color: #e5e7eb;
+    --border-radius: 8px;
+
+    /* シャドウ */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== リセット & ベーススタイル ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+                 "Yu Gothic", YuGothic, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+                 Meiryo, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+}
+
+/* ===== レイアウト ===== */
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ===== サイドバー ===== */
+.sidebar {
+    width: 280px;
+    background-color: var(--bg-primary);
+    border-right: 1px solid var(--border-color);
+    padding: 2rem 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+}
+
+.sidebar-header {
+    padding: 0 1.5rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blue-700);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 1rem 0;
+}
+
+.nav-item {
+    margin-bottom: 0.25rem;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: var(--bg-accent);
+    color: var(--blue-700);
+    border-left-color: var(--blue-500);
+}
+
+/* ===== メインコンテンツ ===== */
+.content {
+    flex: 1;
+    margin-left: 280px;
+    padding: 2rem 3rem;
+    max-width: 1400px;
+}
+
+/* ===== セクション ===== */
+section {
+    background-color: var(--bg-primary);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+section h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--blue-900);
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--blue-100);
+}
+
+section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--blue-700);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+section h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+section h4 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== タイトルセクション ===== */
+.title-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-700) 100%);
+    color: var(--text-white);
+}
+
+.title-section h1 {
+    font-size: 2.5rem;
+    color: var(--text-white);
+    border-bottom: none;
+    margin-bottom: 1rem;
+}
+
+.title-section .meta {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-top: 0.5rem;
+}
+
+/* ===== エグゼクティブサマリー ===== */
+.executive-summary {
+    background: linear-gradient(to bottom, var(--blue-50), var(--bg-primary));
+    border-left: 4px solid var(--blue-500);
+}
+
+.key-finding {
+    background-color: var(--bg-accent);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--blue-500);
+}
+
+.key-finding h3 {
+    color: var(--blue-700);
+    margin-top: 0;
+}
+
+.key-finding .highlight {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blue-700);
+}
+
+/* ===== グラフコンテナ ===== */
+.chart-container {
+    position: relative;
+    height: 400px;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius);
+}
+
+.chart-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--blue-700);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--blue-100);
+}
+
+/* ===== テーブル ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+thead {
+    background-color: var(--blue-500);
+    color: var(--text-white);
+}
+
+th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+tbody tr:hover {
+    background-color: var(--bg-accent);
+}
+
+/* ===== FAテーマ分布 ===== */
+.theme-list {
+    list-style: none;
+    padding: 0;
+}
+
+.theme-item {
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--blue-300);
+}
+
+.theme-item h4 {
+    color: var(--blue-700);
+    margin-top: 0;
+}
+
+.theme-count {
+    font-weight: 600;
+    color: var(--blue-500);
+}
+
+.theme-responses {
+    margin-top: 0.75rem;
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.theme-responses li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== 推奨事項 ===== */
+.recommendations {
+    background-color: var(--bg-accent);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.recommendation-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.recommendation-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.priority-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+.priority-high {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.priority-medium {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.priority-low {
+    background-color: var(--blue-100);
+    color: var(--blue-900);
+}
+
+/* ===== レスポンシブデザイン ===== */
+
+/* タブレット（768px-1023px） */
+@media (max-width: 1023px) {
+    .sidebar {
+        width: 220px;
+    }
+
+    .content {
+        margin-left: 220px;
+        padding: 1.5rem 2rem;
+    }
+
+    .chart-container {
+        height: 350px;
+    }
+}
+
+/* モバイル（767px以下） */
+@media (max-width: 767px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .title-section h1 {
+        font-size: 1.75rem;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+
+    .chart-container {
+        height: 300px;
+        padding: 1rem;
+    }
+
+    table {
+        font-size: 0.875rem;
+    }
+
+    th, td {
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+/* ===== 印刷用CSS ===== */
+@media print {
+    .sidebar {
+        display: none;
+    }
+
+    .content {
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    section {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+    }
+
+    .chart-container {
+        page-break-inside: avoid;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+/* ===== ユーティリティクラス ===== */
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.text-blue {
+    color: var(--blue-700);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.hidden {
+    display: none;
+}
